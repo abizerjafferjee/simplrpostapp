@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_marginTop="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/transparent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewusere"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp"
+            android:visibility="gone"
+            app:strokeColor="@color/colorPrimaryDark"
+            app:strokeWidth="1dp"
+            tools:ignore="MissingConstraints">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:id="@+id/llineart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_weight=".2"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/imagebackground"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/round" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lnlytPublicContent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_weight=".75"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/proximanova_semibold"
+                            android:text="Apllo Hospital, Delhi"
+                            android:textColor="@color/colorBlack"
+                            android:maxLines="1"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:maxLines="1"
+                            android:fontFamily="@font/proximanova_regular"
+                            android:text="Hospital" />
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imgShare"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/shareaddressicomone"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight=".1"
+
+                        />
+
+
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardbussiness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp"
+            app:strokeColor="@color/colorBrown"
+            app:strokeWidth="1dp"
+            tools:ignore="MissingConstraints">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:id="@+id/llineart1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:shape="ring"
+                        app:cardCornerRadius="30dp">
+                        <ImageView
+                            android:id="@+id/imagepublic"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/profile_public"
+                            />
+                    </androidx.cardview.widget.CardView>
+                    <!--<ImageView-->
+                        <!--android:id="@+id/imagepublic"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="60dp"-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:layout_marginTop="7dp"-->
+                        <!--android:layout_marginBottom="7dp"-->
+                        <!--android:layout_weight=".2"-->
+                        <!--android:adjustViewBounds="true"-->
+                        <!--android:background="@drawable/imagebackground"-->
+                        <!--android:scaleType="fitCenter"-->
+                        <!--android:src="@drawable/public_placeholder" />-->
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginBottom="7dp"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/shortname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/proximanova_semibold"
+                            android:text="Apllo Hospital, Delhi"
+                            android:textColor="@color/colorBlack"
+                            android:maxLines="1"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:maxLines="1"
+                            android:fontFamily="@font/proximanova_regular"
+                            android:text="Hospital" />
+
+                        <TextView
+                            android:id="@+id/pluscode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:maxLines="1"
+                            android:fontFamily="@font/proximanova_semibold"
+                            android:text="8GCMRECT+X6"
+                            android:textColor="@color/colorBlack" />
+
+
+                    </LinearLayout>
+
+                    <!--<androidx.cardview.widget.CardView-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="26dp"-->
+                        <!--android:layout_gravity="center_vertical|left"-->
+                        <!--android:layout_weight=".25"-->
+                        <!--app:cardCornerRadius="13dp"-->
+                        <!--app:cardElevation="2dp">-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:background="@color/colorBrown"-->
+                            <!--android:fontFamily="@font/proximanova_semibold"-->
+                            <!--android:gravity="center"-->
+                            <!--android:text=" Public "-->
+                            <!--android:textColor="@color/colorWhite"-->
+                            <!--android:textSize="14dp" />-->
+                    <!--</androidx.cardview.widget.CardView>-->
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--android:layout_marginLeft="5dp"-->
+                        <!--android:layout_weight=".15"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:weightSum="1">-->
+
+                        <!--<ImageView-->
+
+
+                            <!--android:id="@+id/sharePublic"-->
+                            <!--android:layout_width="0dp"-->
+
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center_vertical"-->
+                            <!--android:layout_weight=".8"-->
+
+                            <!--android:scaleType="fitCenter"-->
+                            <!--android:src="@drawable/share" />-->
+
+                    <!--</LinearLayout>-->
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!---->
+        <!--<androidx.cardview.widget.CardView-->
+            <!--android:id="@+id/cardbussiness"-->
+            <!--android:layout_marginTop="1dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--app:cardElevation="2dp"-->
+
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:layout_height="60dp"-->
+            <!--app:cardCornerRadius="15dp"-->
+
+            <!--android:layout_marginRight="10dp"-->
+
+            <!--tools:ignore="MissingConstraints">-->
+
+
+
+
+
+
+
+
+                <!--<LinearLayout-->
+
+                  <!--android:layout_gravity="center_vertical"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content">-->
+
+
+
+                    <!--<TextView-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--android:id="@+id/shortname"-->
+                        <!--android:fontFamily="@font/proximanova_semibold"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:textSize="17dp"-->
+                        <!--android:textColor="@color/colorPrimaryDark"-->
+                        <!--android:layout_marginLeft="12dp"-->
+
+                        <!--android:text="Apllo Hospital, Delhi"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content" />-->
+
+
+
+
+                <!--</LinearLayout-->
+                    <!--&gt;-->
+
+
+
+
+
+
+
+
+
+        <!--</androidx.cardview.widget.CardView>-->
+
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

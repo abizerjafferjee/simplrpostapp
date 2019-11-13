@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:background="@color/colorWhiteE"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/aboutus_layout">
+
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:elevation="8dp"
+            android:background="@color/colorWhiteE"
+            android:id="@+id/toolbar_lay"
+            >
+            <ImageView
+
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="6dp"
+                android:id="@+id/back_press"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/back_arrow"
+                />
+
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/proximanova_semibold"
+                android:text="Refer a friend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="18sp"
+                android:id="@+id/toolbar_text"
+
+                />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar_lay"
+            android:fillViewport="true">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar_lay">
+
+
+                <ImageView
+
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/forgotimage"
+                    android:layout_width="260dp"
+                    android:layout_height="260dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/friendimage" />
+
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/aboutus_texttwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/forgotimage"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/proximanova_regular"
+                  android:text="Spread your love for Simplr Post, by simply sharing this referral code with your friends and family."
+                    android:textSize="14sp" />
+
+                <RelativeLayout
+                    android:id="@+id/rel"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/aboutus_texttwo"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/dotted">
+
+
+                    <TextView
+                        android:id="@+id/texttwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="0dp"
+
+
+                        android:fontFamily="@font/proximanova_semibold"
+
+                        android:gravity="center"
+                        android:text="P1T6K7G"
+                        android:textSize="20sp" />
+
+
+                </RelativeLayout>
+
+
+                <Button
+                    android:id="@+id/submit_button_id"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/rel"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="112dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="99dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/button_corner"
+                    android:fontFamily="@font/proximanova_semibold"
+                    android:gravity="center"
+                    android:text="Refer"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/Loader"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
