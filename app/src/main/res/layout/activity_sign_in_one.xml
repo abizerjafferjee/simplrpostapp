@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root_lay"
+    android:background="@color/colorWhiteE"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+            android:background="@color/colorWhiteE"
+            android:layout_height="match_parent">
+
+
+
+        <ScrollView
+            android:background="@color/colorWhiteE"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           >
+
+
+            <LinearLayout
+
+                android:background="@color/colorWhiteE"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_below="@id/toolbar_lay"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <RelativeLayout
+                        android:layout_marginTop="50dp"
+                        android:id="@+id/relativetop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                        <androidx.cardview.widget.CardView
+                            app:cardElevation="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="360dp"
+                            android:layout_height="340dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginLeft="25dp"
+
+                            android:layout_marginTop="18dp"
+                            android:layout_marginRight="25dp"
+                            android:background="@color/colorWhite"
+                            app:cardCornerRadius="30dp">
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="340dp"
+
+
+                                android:orientation="vertical">
+
+
+                                <TextView
+                                    android:id="@+id/signin"
+                                    android:layout_width="wrap_content"
+
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="25dp"
+                                    android:fontFamily="@font/proximanova_semibold"
+                                    android:gravity="center"
+                                    android:text="Sign In"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="20dp" />
+
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="35dp"
+                                    android:layout_marginRight="10dp"
+                                    android:background="@drawable/signupbackground_card">
+
+
+                                    <LinearLayout
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="20dp"
+
+                                        android:orientation="horizontal">
+
+
+                                        <ImageView
+
+                                            android:layout_width="16dp"
+                                            android:layout_height="16dp"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/mail" />
+
+
+                                        <EditText
+                                            android:id="@+id/signin_email_id"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+
+
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="5dp"
+
+                                            android:background="@android:color/transparent"
+                                            android:fontFamily="@font/proximanova_regular"
+                                            android:hint="Email Id/ Username"
+                                            android:inputType="textEmailAddress"
+                                            android:maxLines="1"
+                                            android:scrollHorizontally="true"
+                                            android:singleLine="true"
+                                            android:textSize="18dp" />
+
+
+                                    </LinearLayout>
+
+
+                                </RelativeLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="40dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_marginRight="10dp"
+                                    android:background="@drawable/signupbackground_card">
+
+
+                                    <LinearLayout
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="20dp"
+
+                                        android:orientation="horizontal">
+
+
+                                        <ImageView
+
+                                            android:layout_width="16dp"
+                                            android:layout_height="16dp"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/password" />
+
+
+                                        <EditText
+                                            android:id="@+id/signin_password"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="5dp"
+                                            android:background="@android:color/transparent"
+
+
+                                            android:fontFamily="@font/proximanova_regular"
+                                            android:hint="Password"
+
+                                            android:inputType="textPassword"
+                                            android:maxLines="1"
+                                            android:scrollHorizontally="true"
+                                            android:singleLine="true"
+                                            android:textSize="18dp" />
+
+
+                                    </LinearLayout>
+
+
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:id="@+id/forget"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="20dp"
+
+                                    android:fontFamily="@font/proximanova_regular"
+
+                                    android:text="Forgot Password? "
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="14dp" />
+
+                                <LinearLayout
+                                    android:id="@+id/layoutSignup"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="35dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+                                        android:fontFamily="@font/proximanova_regular"
+
+                                        android:text="Don't Have an account? "
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="14dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/proximanova_bold"
+                                        android:text="Sign Up"
+                                        android:textColor="@color/colorPrimaryDark"
+                                        android:textSize="14dp" />
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:background="@color/colorWhiteE"
+                        android:id="@+id/layoutBottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_below="@id/relativetop"
+
+                        >
+
+                    </RelativeLayout>
+
+                    <androidx.cardview.widget.CardView
+                        app:cardElevation="10dp"
+                        android:id="@+id/cardView4"
+                        android:layout_width="76dp"
+                        android:layout_height="76dp"
+                        android:layout_below="@+id/layoutBottom"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-50dp"
+                        android:layout_marginBottom="20dp"
+                        android:adjustViewBounds="true"
+
+                        app:cardBackgroundColor="@color/colorWhiteE"
+                        app:cardCornerRadius="43dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+
+
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/signauparrow" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <RelativeLayout
+
+                        android:id="@+id/viewrel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/cardView4">
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginTop="0dp"
+                            android:layout_marginRight="5dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+
+                            <View
+
+
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/personal_indo_lable"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginLeft="20dp"
+
+                                android:layout_weight="0.1"
+                                android:background="@color/colorPrimary" />
+
+                            <TextView
+                                android:textColor="@color/colorBlack"
+                                android:fontFamily="@font/proximanova_bold"
+                                android:layout_width="0dp"
+                                android:layout_height="33dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.15"
+                                android:gravity="center"
+                                android:src="@drawable/round"
+                                android:text="OR"
+                                android:textSize="18dp"
+                                />
+
+
+                            <View
+                                android:layout_width="0dp"
+
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/personal_indo_lable"
+
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="0.1"
+                                android:background="@color/colorPrimary" />
+
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/soical"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/viewrel"
+                        android:layout_centerHorizontal="true">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+
+                            android:layout_gravity="center"
+                            android:layout_marginTop="0dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:textColor="@color/colorBlack"
+                                android:fontFamily="@font/proximanova_regular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="Sign In with social media "
+                                android:textSize="15dp"
+                                />
+
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:background="@color/colorWhiteE"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="25dp"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/soical"
+                        android:layout_centerHorizontal="true">
+
+
+                        <LinearLayout
+                            android:layout_marginBottom="10dp"
+
+
+
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/googleButton"
+                                app:cardCornerRadius="19dp"
+                                android:layout_width="150dp"
+                                app:cardElevation="6dp"
+                                app:cardBackgroundColor="@color/colorRed"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="20dp"
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="150dp"
+                                    android:layout_height="40dp"
+
+
+                                    android:orientation="horizontal">
+
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="20dp"
+                                        android:src="@drawable/google" />
+
+
+                                    <TextView
+                                        android:fontFamily="@font/proximanova_semibold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp"
+                                        android:gravity="center"
+                                        android:text="Google"
+                                        android:textColor="@color/colorWhite"
+                                        android:textSize="15dp"
+                                        android:textStyle="bold" />
+
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/btnFacebookLogin"
+                                app:cardCornerRadius="19dp"
+                                android:layout_width="150dp"
+                                app:cardElevation="6dp"
+                                app:cardBackgroundColor="@color/colorBule"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="10dp"
+                                >
+                            <LinearLayout
+                                android:layout_width="150dp"
+                                android:layout_height="40dp"
+
+                              >
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="20dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="20dp"
+                                    android:src="@drawable/facebook" />
+
+
+                                <TextView
+                                    android:fontFamily="@font/proximanova_semibold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="8dp"
+                                    android:gravity="center"
+                                    android:text="Facebook"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+
+
+
+    </RelativeLayout>
+
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btn_sign_in"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="gone"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ProgressBar
+        android:id="@+id/Loader"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

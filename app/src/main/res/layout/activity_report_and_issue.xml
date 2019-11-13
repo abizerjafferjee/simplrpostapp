@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.ReportAnIssue">
+
+    <RelativeLayout
+        android:id="@+id/toolbar_lay"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorWhiteE"
+        android:elevation="8dp"
+        >
+        <ImageView
+
+            android:id="@+id/back_press"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:padding="6dp"
+            android:src="@drawable/back_arrow"
+            />
+
+
+        <TextView
+            android:id="@+id/toolbar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/proximanova_semibold"
+            android:text="Report"
+            android:textColor="@color/colorBlack"
+            android:textSize="18dp"
+
+            />
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_lay"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="15dp"
+
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/addlist"
+                            android:orientation="vertical"
+                            android:padding="15dp">
+
+
+                            <EditText
+
+                                android:id="@+id/etName"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/proximanova_regular"
+
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:textSize="16dp"
+
+                                />
+
+
+                        </LinearLayout>
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="15dp"
+                            android:background="#ffffff"
+                            android:text="  Reporter Name  "
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="17sp" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="15dp"
+
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/addlist"
+                            android:orientation="vertical"
+                            android:padding="15dp">
+
+
+                            <EditText
+
+                                android:id="@+id/etEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/proximanova_regular"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:textSize="16dp"
+
+                                />
+
+
+                        </LinearLayout>
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="15dp"
+                            android:background="#ffffff"
+                            android:text="  Email  "
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="17sp" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="15dp"
+
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/addlist"
+                            android:orientation="horizontal"
+                            android:padding="15dp">
+
+                            <Spinner
+                                android:id="@+id/spinnerPhone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:paddingRight="10dp"
+                                android:paddingLeft="20dp"
+                                android:translationX="-10dp">
+                            </Spinner>
+
+
+                            <EditText
+
+                                android:id="@+id/etNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/proximanova_regular"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:textSize="16dp"
+
+                                />
+
+
+                        </LinearLayout>
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="15dp"
+                            android:background="#ffffff"
+                            android:text="  Contact No.  "
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="17sp" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/location"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp">
+
+
+                        <LinearLayout
+                            android:id="@+id/llBusiness"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/addlist"
+                            android:orientation="horizontal"
+                            android:weightSum="1"
+                            android:padding="15dp">
+
+
+                            <TextView
+
+                                android:layout_weight=".9"
+                                android:id="@+id/txtBusiness"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="10dp"
+
+                                android:fontFamily="@font/proximanova_regular"
+
+
+                                android:text="Select"
+                                android:textSize="16dp"
+
+                                />
+
+                            <ImageView
+
+                                android:layout_width="0dp"
+                                android:layout_weight=".1"
+                                android:layout_height="30dp"
+
+                                android:layout_gravity="center_vertical|right"
+                                android:src="@drawable/rightarrow" />
+
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="0dp"
+                            android:background="@color/colorWhite"
+                            android:fontFamily="@font/proximanova_regular"
+                            android:text="  Business  "
+
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="17sp" />
+
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/issue"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp">
+                        <LinearLayout
+                            android:id="@+id/llissue"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/addlist"
+                            android:orientation="horizontal"
+                            android:weightSum="1"
+                            android:padding="15dp">
+                            <TextView
+                                android:id="@+id/txtIssue"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.9"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="10dp"
+                                android:fontFamily="@font/proximanova_regular"
+                                android:text="Select"
+                                android:textSize="16dp"
+                                />
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_weight="0.1"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical|right"
+
+                                android:src="@drawable/rightarrow" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="0dp"
+                            android:background="@color/colorWhite"
+                            android:fontFamily="@font/proximanova_regular"
+                            android:text="  Issue  "
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="17sp" />
+                    </RelativeLayout>
+
+
+
+
+
+
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="15dp"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/addlist"
+                            android:orientation="vertical"
+                            android:padding="15dp">
+                            <EditText
+
+                                android:id="@+id/etDiscription"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/proximanova_regular"
+                                android:gravity="top"
+
+                                android:textSize="16dp"
+
+                                />
+
+
+                        </LinearLayout>
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="15dp"
+                            android:background="#ffffff"
+                            android:text="  Description  "
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="17sp" />
+
+                    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+                    <Button
+                        android:id="@+id/btnReport"
+                        android:layout_width="140dp"
+
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+
+
+                        android:layout_marginBottom="20dp"
+
+
+                        android:background="@drawable/button_corner"
+                        android:fontFamily="@font/proximanova_semibold"
+                        android:gravity="center"
+                        android:text="Report"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16dp" />
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <ProgressBar
+        android:id="@+id/Loaderr"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
