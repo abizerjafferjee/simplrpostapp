@@ -340,7 +340,8 @@ public class EditPublicAddressLocation extends AppCompatActivity implements OnMa
             try {
                 imageStream = this.getContentResolver().openInputStream(selectedImage);
                 final Bitmap image = BitmapFactory.decodeStream(imageStream);
-                imageBase64 = encodeImage(image);
+                //imageBase64 = encodeImage(image);
+                imageBase64 = new UtilityClass().imageToBase64(imgAddressLogo);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -366,7 +367,8 @@ public class EditPublicAddressLocation extends AppCompatActivity implements OnMa
             try {
                 imageStream = this.getContentResolver().openInputStream(selectedImage);
                 final Bitmap image = BitmapFactory.decodeStream(imageStream);
-                strLocationPicBase64 = encodeImage(image);
+                //strLocationPicBase64 = encodeImage(image);
+                strLocationPicBase64 = new UtilityClass().imageToBase64(imgLocationPic);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

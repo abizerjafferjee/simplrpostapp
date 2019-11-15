@@ -237,7 +237,8 @@ public class EditPrivateAddressPrimary extends AppCompatActivity {
             try {
                 imageStream = this.getContentResolver().openInputStream(selectedImage);
                 final Bitmap image = BitmapFactory.decodeStream(imageStream);
-                imageBase64 = encodeImage(image);
+                //imageBase64 = encodeImage(image);
+                imageBase64 = new UtilityClass().imageToBase64(imgLocationPicture);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
