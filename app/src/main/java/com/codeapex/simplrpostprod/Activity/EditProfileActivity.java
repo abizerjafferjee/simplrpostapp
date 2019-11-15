@@ -277,7 +277,8 @@ public class EditProfileActivity extends AppCompatActivity {
             try {
                 imageStream = this.getContentResolver().openInputStream(selectedImage);
                 final Bitmap image = BitmapFactory.decodeStream(imageStream);
-                imageBase64 = encodeImage(image);
+                //imageBase64 = encodeImage(image);
+                imageBase64 = new UtilityClass().imageToBase64(imgUserImage);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
