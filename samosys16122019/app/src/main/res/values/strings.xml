@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">SimplrPost</string>
+    <string name="about_us_name">Lourum Ipsum</string>
+    <string name="about_us_nametwo">Description is the pattern of narrative development
+        that aims to make vivid a place, object, character, or group.
+        Description is one of four rhetorical modes, along with exposition,
+        argumentation, and narration.
+        In practice it would be difficult to write literature that drew on just
+        one of the four basic modes
+        Description is the pattern of narrative development that
+        aims to make vivid a place, object, character, or group
+        Description is one of four rhetorical modes, along with exposition,
+        argumentation, and narration.
+        In practice it would be difficult to write literature that drew on just
+        one of the four basic modes
+
+
+
+
+
+
+    </string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!--<string name="facebook_app_id">538030537028982</string>
+    <string name="fb_login_protocol_scheme">fb538030537028982</string>-->
+    <string name="facebook_app_id">519238782263026</string>
+    <string name="fb_login_protocol_scheme">fb519238782263026</string>
+
+
+    <string name="skip">SKIP</string>
+    <string name="next">NEXT</string>
+    <string name="Verify_Procedd"><![CDATA[Verify & Proceed]]></string>
+
+    <string-array name="country">
+        <item>Select country</item>
+        <item>India</item>
+        <item>Kenya</item>
+        <item>Tanzania</item>
+        <item>United States</item>
+
+    </string-array>
+
+    <string-array name="question">
+        <item>Security question</item>
+        <item>What is your hobby?</item>
+        <item>What is your childhood name?</item>
+        <item>What is your father name?</item>
+    </string-array>
+
+</resources>

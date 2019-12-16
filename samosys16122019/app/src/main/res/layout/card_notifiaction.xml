@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="5dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/notifiactionInformation"
+        android:textColor="@color/colorBlack"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+
+        android:fontFamily="@font/proximanova_semibold"
+
+        android:layout_gravity=""
+        android:text="It is always good to hear It is always good to hear from youIt is always good to hear from you."
+        android:textSize="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <LinearLayout
+        android:layout_marginBottom="15dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+
+
+
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+
+            app:srcCompat="@drawable/notificatioicon" />
+
+        <TextView
+            android:id="@+id/date"
+            android:textColor="@color/colorgray"
+            android:layout_marginLeft="10dp"
+
+            android:fontFamily="@font/proximanova_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+
+            android:gravity="center_vertical"
+            android:text="11-04-2019"
+            android:textSize="16dp" />
+
+
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:background="@color/bg_gray"></LinearLayout>
+
+
+
+</LinearLayout>

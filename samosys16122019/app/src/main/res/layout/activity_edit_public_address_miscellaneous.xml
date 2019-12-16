@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+
+        android:id="@+id/toolbar_lay"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorWhiteE"
+        android:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+
+            android:id="@+id/back_press"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:padding="6dp"
+            android:src="@drawable/back_arrow" />
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/proximanova_semibold"
+            android:text="Edit Miscellaneous Information"
+            android:textColor="@color/colorBlack"
+
+            android:textSize="18dp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/parentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="35dp">
+
+        <!--This is slide eight-->
+        <LinearLayout
+            android:id="@+id/slide1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:weightSum="1">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+
+                    android:weightSum="1">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_weight=".9"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="20dp"
+                                android:gravity="center_horizontal"
+                                android:text="Some more contact information"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="30sp" />
+
+
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginTop="12dp"
+                                    android:background="@drawable/addlist"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="15dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingEnd="5dp">
+
+
+                                    <EditText
+
+                                        android:id="@+id/txt_pub_email"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@android:color/transparent"
+                                        android:fontFamily="@font/proximanova_regular"
+                                        android:inputType="textEmailAddress"
+                                        android:maxLines="1"
+                                        android:textSize="16dp"
+
+                                        />
+
+
+                                </LinearLayout>
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginLeft="15dp"
+                                    android:background="#ffffff"
+                                    android:text="   Email Id   "
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="17sp" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginTop="12dp"
+                                    android:background="@drawable/addlist"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="15dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingEnd="5dp">
+
+
+                                    <Spinner
+                                        android:id="@+id/spinnerPhone"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:paddingRight="10dp"
+                                        android:paddingLeft="20dp"
+
+                                        android:translationX="-10dp">
+                                    </Spinner>
+
+
+                                    <EditText
+
+                                        android:id="@+id/txtvPhoneNumber"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@android:color/transparent"
+                                        android:fontFamily="@font/proximanova_regular"
+
+                                        android:inputType="phone"
+                                        android:maxLines="1"
+                                        android:textSize="16dp"
+
+                                        />
+
+
+                                </LinearLayout>
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginLeft="15dp"
+                                    android:background="#ffffff"
+                                    android:text="   Phone Number   "
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="17sp" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginTop="12dp"
+                                    android:background="@drawable/addlist"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="15dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingEnd="5dp">
+
+
+                                    <EditText
+
+                                        android:id="@+id/txtvWebsiteURL"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@android:color/transparent"
+                                        android:inputType="textWebEmailAddress"
+                                        android:fontFamily="@font/proximanova_regular"
+                                        android:maxLines="1"
+                                        android:textSize="16dp"
+
+                                        />
+
+
+                                </LinearLayout>
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginLeft="15dp"
+                                    android:background="#ffffff"
+                                    android:text="   Website URL   "
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="17sp" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginTop="12dp"
+                                    android:background="@drawable/addlist"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="15dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingEnd="5dp">
+
+
+                                    <EditText
+
+                                        android:id="@+id/txtvFacebook"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@android:color/transparent"
+                                        android:inputType="textWebEmailAddress"
+                                        android:fontFamily="@font/proximanova_regular"
+                                        android:maxLines="1"
+                                        android:textSize="16dp"
+
+                                        />
+
+
+                                </LinearLayout>
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginLeft="15dp"
+                                    android:background="#ffffff"
+                                    android:text="   Facebook   "
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="17sp" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginTop="12dp"
+                                    android:background="@drawable/addlist"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="15dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingEnd="5dp">
+
+
+                                    <EditText
+
+                                        android:id="@+id/txtvTwitter"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@android:color/transparent"
+                                        android:inputType="textWebEmailAddress"
+                                        android:fontFamily="@font/proximanova_regular"
+                                        android:maxLines="1"
+                                        android:textSize="16dp"
+
+                                        />
+
+
+                                </LinearLayout>
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginLeft="15dp"
+                                    android:background="#ffffff"
+                                    android:text="   Twitter   "
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="17sp" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginTop="12dp"
+                                    android:background="@drawable/addlist"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="15dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingEnd="5dp">
+
+
+                                    <EditText
+
+                                        android:id="@+id/txtvLinkedIn"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@android:color/transparent"
+                                        android:inputType="textWebEmailAddress"
+                                        android:fontFamily="@font/proximanova_regular"
+                                        android:maxLines="1"
+                                        android:textSize="16dp"
+
+                                        />
+
+
+                                </LinearLayout>
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginLeft="15dp"
+                                    android:background="#ffffff"
+                                    android:text="   LinkedIn   "
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="17sp" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginTop="12dp"
+                                    android:background="@drawable/addlist"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="15dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingEnd="5dp">
+
+
+                                    <EditText
+
+                                        android:id="@+id/txtvInstagram"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+
+                                        android:background="@android:color/transparent"
+                                        android:inputType="textWebEmailAddress"
+                                        android:fontFamily="@font/proximanova_regular"
+                                        android:maxLines="1"
+                                        android:textSize="16dp"
+
+                                        />
+
+
+                                </LinearLayout>
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginLeft="15dp"
+                                    android:background="#ffffff"
+                                    android:text="   Instagram   "
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="17sp" />
+
+                            </RelativeLayout>
+
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginRight="30dp"
+                                android:layout_marginBottom="20dp"
+                                android:weightSum="1">
+
+
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".6"></LinearLayout>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/crdSlide1Next"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_gravity="center_vertical|right"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_weight=".4"
+                                    android:backgroundTint="@color/colorPrimaryDark"
+                                    app:cardCornerRadius="20dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginRight="5dp"
+                                            android:fontFamily="@font/proximanova_semibold"
+                                            android:gravity="center"
+                                            android:text="Next"
+                                            android:textAlignment="textStart"
+                                            android:textColor="@color/colorWhite"
+                                            android:textSize="16dp" />
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:src="@drawable/next_button_arrow" />
+                                    </LinearLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </ScrollView>
+
+
+        </LinearLayout>
+
+
+        <!--This is slide nine-->
+        <LinearLayout
+            android:id="@+id/slide2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:weightSum="1">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+
+                    android:weightSum="1">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_weight=".9"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="20dp"
+                                android:gravity="center_horizontal"
+                                android:text="Other information"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="30sp" />
+
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="20dp"
+                                android:fontFamily="@font/proximanova_semibold"
+                                android:text="Business Timing"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="18dp" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rcvTiming"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="16dp">
+
+
+                            </androidx.recyclerview.widget.RecyclerView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="16dp"
+                                android:orientation="horizontal"
+                                android:weightSum="1">
+
+
+                                <TextView
+
+
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/proximanova_semibold"
+                                    android:text="Delivery"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="18dp"
+                                    android:layout_weight=".8"/>
+
+                                <Switch
+                                    android:id="@+id/sw_delivery"
+                                    android:layout_width="0dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="right"
+                                    android:gravity="right"
+                                    android:layout_weight=".2"
+                                    />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginRight="30dp"
+                                android:layout_marginBottom="20dp"
+                                android:weightSum="1">
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/crdSlide2Previous"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_gravity="left|center_vertical"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_weight=".4"
+                                    android:backgroundTint="@color/colorPrimaryDark"
+                                    app:cardCornerRadius="20dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginRight="5dp"
+                                            android:src="@drawable/previous_button_arrow" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/proximanova_semibold"
+                                            android:gravity="center"
+                                            android:text="Previous"
+                                            android:textAlignment="textStart"
+                                            android:textColor="@color/colorWhite"
+                                            android:textSize="16dp" />
+
+                                    </LinearLayout>
+
+                                </androidx.cardview.widget.CardView>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"></LinearLayout>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/crdSlide2Next"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_gravity="center_vertical|right"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_weight=".4"
+                                    android:backgroundTint="@color/colorPrimaryDark"
+                                    app:cardCornerRadius="20dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginRight="5dp"
+                                            android:fontFamily="@font/proximanova_semibold"
+                                            android:gravity="center"
+                                            android:text="Update"
+                                            android:textAlignment="textStart"
+                                            android:textColor="@color/colorWhite"
+                                            android:textSize="16dp" />
+
+
+                                    </LinearLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </ScrollView>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/Loader"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
