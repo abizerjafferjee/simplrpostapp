@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhiteE"
+    android:id="@+id/root_lay"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <FrameLayout
+        android:clickable="true"
+        android:id="@+id/saved_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/toolbar_lay"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorWhiteE"
+        android:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="6dp"
+            android:id="@+id/back_press"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back_arrow"
+            />
+
+        <TextView
+            android:textColor="@color/colorBlack"
+            android:fontFamily="@font/proximanova_semibold"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Saved Locations"
+
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/image"
+
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:padding="3dp"
+            android:src="@drawable/myaddressplus"
+
+            />
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+        <ScrollView
+            android:visibility="gone"
+            android:layout_marginTop="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cvFinalImage"
+            android:fillViewport="true">>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar_lay">
+
+                <ImageView
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/feedback_imo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:src="@drawable/savedaddressdefault" />
+
+                <TextView
+                    android:fontFamily="@font/proximanova_regular"
+                    android:id="@+id/content_feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/feedback_imo"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text="It is always good to hear It is always good to hear from you and how we can make ourselves more valuable for you."
+                    android:textSize="15dp" />
+
+                <Button
+                    android:fontFamily="@font/proximanova_semibold"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/content_feedback"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="114dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="51dp"
+                    android:layout_marginEnd="97dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/button_corner"
+                    android:gravity="center"
+                    android:text="Add List"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+
+            </RelativeLayout>
+        </ScrollView>
+
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="visible"
+        android:layout_marginTop="70dp"
+        android:layout_below="@+id/toolbar_lay"
+
+
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+    </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/Loader"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

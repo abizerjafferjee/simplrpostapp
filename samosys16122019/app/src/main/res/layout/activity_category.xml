@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhiteE"
+    tools:context=".Activity.CategoryActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/toolbar_lay"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/colorWhiteE"
+            android:elevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="6dp"
+                android:id="@+id/back_press"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/back_arrow"
+                />
+
+
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/proximanova_semibold"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Category"
+
+                android:textSize="18dp" />
+
+            <ImageView
+                android:visibility="gone"
+
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:padding="3dp"
+                android:src="@drawable/myaddressplus"
+
+                />
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+        <androidx.cardview.widget.CardView
+
+        android:layout_below="@+id/toolbar_lay"
+
+            android:id="@+id/cvFinalImage"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            android:layout_marginEnd="40dp">
+
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
+
+                android:orientation="horizontal">
+
+
+
+
+
+                <EditText
+                    android:fontFamily="@font/proximanova_regular"
+                    android:id="@+id/txt_search"
+
+                    android:layout_width="match_parent"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_marginRight="5dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Search category"
+                    />
+
+                <ImageView
+                    android:layout_marginRight="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/searchgreen" />
+
+
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@+id/cvFinalImage"
+
+            android:id="@+id/recyclervieww"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+
+            />
+            <include layout="@layout/lyt_loading"
+                />
+    </RelativeLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
