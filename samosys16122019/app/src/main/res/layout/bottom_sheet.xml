@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/lnlytFacebook"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="0.1"
+            android:src="@drawable/facebookk" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.5"
+            android:fontFamily="@font/proximanova_semibold"
+            android:gravity="center|left"
+            android:text="Facebook"
+            android:textSize="16dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnlytInstagram"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="0.1"
+            android:src="@drawable/insta" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.5"
+            android:fontFamily="@font/proximanova_semibold"
+            android:gravity="center|left"
+            android:text="Instagram"
+            android:textSize="16dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnlytLinkedIn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="0.1"
+            android:src="@drawable/linkedin" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.5"
+            android:fontFamily="@font/proximanova_semibold"
+            android:gravity="center|left"
+            android:text="LinkedIn"
+            android:textSize="16dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnlytTwitter"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="0.1"
+            android:src="@drawable/twitter" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.5"
+            android:fontFamily="@font/proximanova_semibold"
+            android:gravity="center|left"
+            android:text="Twitter"
+            android:textSize="16dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnlytWebsite"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="0.1"
+            android:src="@drawable/galob" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.5"
+            android:fontFamily="@font/proximanova_semibold"
+            android:gravity="center|left"
+            android:text="Website"
+            android:textSize="16dp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
