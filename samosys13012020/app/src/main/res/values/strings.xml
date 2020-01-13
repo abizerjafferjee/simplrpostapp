@@ -1,0 +1,157 @@
+<resources>
+    <string name="app_name">SimplrPost</string>
+    <string name="about_us_name">Lourum Ipsum</string>
+    <string name="about_us_nametwo">Description is the pattern of narrative development
+        that aims to make vivid a place, object, character, or group.
+        Description is one of four rhetorical modes, along with exposition,
+        argumentation, and narration.
+        In practice it would be difficult to write literature that drew on just
+        one of the four basic modes
+        Description is the pattern of narrative development that
+        aims to make vivid a place, object, character, or group
+        Description is one of four rhetorical modes, along with exposition,
+        argumentation, and narration.
+        In practice it would be difficult to write literature that drew on just
+        one of the four basic modes
+
+
+
+
+
+
+    </string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!--<string name="facebook_app_id">538030537028982</string>
+    <string name="fb_login_protocol_scheme">fb538030537028982</string>-->
+    <string name="facebook_app_id">519238782263026</string>
+    <string name="fb_login_protocol_scheme">fb519238782263026</string>
+
+
+    <string name="skip">SKIP</string>
+    <string name="next">NEXT</string>
+    <string name="Verify_Procedd"><![CDATA[Verify & Proceed]]></string>
+    <string name="add_address">Add Address</string>
+    <string name="save">Save</string>
+
+    <string-array name="country">
+        <item>Select Country</item>
+        <item>Algeria</item>
+        <item>Angola</item>
+        <item>Botswana</item>
+        <item>Cameroon</item>
+        <item>Cote D’Ivoire</item>
+        <item>Ethopia</item>
+        <item>Egypt</item>
+        <item>Ghana</item>
+        <item>Gambia</item>
+        <item>India</item>
+        <item>Kenya</item>
+        <item>Mozambique</item>
+        <item>Morocco</item>
+        <item>Nigeria</item>
+        <item>Rwanda</item>
+        <item>Senegal</item>
+        <item>South Africa</item>
+        <item>Tanzania</item>
+        <item>Tunisia</item>
+        <item>Uganda</item>
+        <item>United States</item>
+        <item>Zambia</item>
+
+    </string-array>
+    <string-array name="street">
+        <item>Street</item>
+        <item>Corner</item>
+        <item>Intersection</item>
+
+    </string-array>
+    <string-array name="building">
+        <item>Building</item>
+        <item>House</item>
+        <item>Shop</item>
+
+    </string-array>
+    <string-array name="entrance">
+        <item>Entrance</item>
+        <item>Floor</item>
+    </string-array>
+    <string-array name="question">
+        <item>Security question</item>
+        <item>What is your hobby?</item>
+        <item>What is your childhood name?</item>
+        <item>What is your father name?</item>
+    </string-array>
+
+    <string name="public_">Public</string>
+    <string name="private_">Private</string>
+    <string name="public_private_message">Public addresses can be viewed and saved by anyone.\n\nPrivate addresses can be saved by user with whom you have shared the address.</string>
+    <string name="search">Search</string>
+    <string name="address_plus_code">Your address PLUS CODE is</string>
+    <string name="unique_link_field_hint">Unique address name</string>
+    <string name="country">City and country</string>
+    <string name="city_town">Town/Region</string>
+    <string name="street_road_name_field_hint">Road name and number</string>
+    <string name="building_field_hint">Building or establishment name</string>
+    <string name="entrance_field_hint">Apartment or unit number</string>
+    <string name="direction_text_hint">Type how you usually give some one direction to your location</string>
+    <string name="address_link">Address link  :</string>
+    <string name="public_view">Public view</string>
+    <string name="qr_code">Qr Code</string>
+    <string name="share">Share</string>
+    <string name="unique_name_message">Your address name should be unique. it will be used to generate a link like simplrpost.com/myaddress\n\nThe name should be in lowercase, should not contain whitespaces or special characters. you may substitute the spaces with a dash or underscore.</string>
+    <string name="plusCode_message">This plus code can be mapped on this app or Google Maps.</string>
+    <string name="direction_message">Text directions helps people to find your address quickly relative to other buildings and landmarks near by.</string>
+    <string name="image_message">Add a picture of your location. Most people get lost when they are very close to an address. Pictures allow them to identify your address quickly and reduce their ETA by more than 20%. \n\nAdd a picture of your location to make it easier for people like delivery drivers to identify your address without calling you.</string>
+
+
+    //open code
+    <string name="current_title">OLC Demo</string>
+
+    <string name="get_your_code">Get your code</string>
+
+    <string name="code_view_empty">No code to display</string>
+    <string name="current_location_loading">Loading your location</string>
+    <string name="current_location_error">Can\'t determine your location</string>
+
+    <string name="share_chooser_title">Share via</string>
+    <string name="share_menu_share_code">Share…</string>
+    <string name="share_menu_save_to_contact">Save to contact</string>
+
+    <string name="no_locality">unknown locality</string>
+
+    <string name="distance_meters">%d m</string>
+    <string name="distance_few_kilometers">%.1f km</string>
+    <string name="distance_many_kilometers">%.0f km</string>
+
+    <string name="search_hint">Look up a code</string>
+    <string name="search_invalid">Code not found</string>
+    <string name="search_empty">Enter a code to search</string>
+
+    <string name="welcome_page_title">Discover your OLC</string>
+    <string name="welcome_page_text">Discover the Open Location Code of your home.\nOpen Location Codes are free and work with Google Maps.</string>
+
+    <string name="navigate_button_desc">Navigate from your location to the code</string>
+    <string name="share_code_button_desc">Share the code or add to a contact</string>
+    <string name="satellite_button_desc">Toggle satellite layer</string>
+    <string name="my_location_button_desc">Show your current location</string>
+    <string name="cancel_search_desc">Cancel search</string>
+    <string name="title_activity_home__new">Home_Activity_new</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+</resources>

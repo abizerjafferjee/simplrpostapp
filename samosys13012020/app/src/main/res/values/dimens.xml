@@ -1,0 +1,49 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <dimen name="fab_margin">10dp</dimen>
+    <dimen name="dots_height">30dp</dimen>
+    <dimen name="dots_margin_bottom">20dp</dimen>
+    <dimen name="img_width_height">120dp</dimen>
+    <dimen name="slide_title">30dp</dimen>
+    <dimen name="slide_desc">16dp</dimen>
+    <dimen name="desc_padding">40dp</dimen>
+
+
+    //opencodelocation
+    <dimen name="default_font_size">14sp</dimen>
+    <dimen name="title_font_size">18sp</dimen>
+
+    <dimen name="app_bar_elevation">4dp</dimen>
+    <dimen name="button_elevation">2dp</dimen>
+
+    <dimen name="direction_view_margin">16dp</dimen>
+    <dimen name="direction_view_margin_right">104dp</dimen>
+
+    <dimen name="bottom_bar_height">60dp</dimen>
+    <dimen name="bottom_bar_button_padding">8dp</dimen>
+
+    <dimen name="code_view_margin">8dp</dimen>
+
+    <dimen name="search_view_height">48dp</dimen>
+    <dimen name="search_view_margin">16dp</dimen>
+    <dimen name="search_view_edit_padding_left">16dp</dimen>
+    <dimen name="search_view_edit_padding">8dp</dimen>
+    <dimen name="search_view_button_padding">8dp</dimen>
+    <dimen name="search_view_button_right_margin">16dp</dimen>
+    <dimen name="search_view_radius">2dp</dimen>
+    <dimen name="search_view_vertical_offset">10dp</dimen>
+
+    <dimen name="map_buttons_margin_top">90dp</dimen>
+    <dimen name="map_buttons_margin_right">20dp</dimen>
+    <dimen name="map_buttons_padding">8dp</dimen>
+
+    <dimen name="welcome_button_padding">8dp</dimen>
+    <dimen name="welcome_button_padding_right">24dp</dimen>
+    <dimen name="welcome_text_padding">32dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+</resources>

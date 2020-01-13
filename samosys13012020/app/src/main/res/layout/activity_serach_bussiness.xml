@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:id="@+id/root_lay"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:visibility="visible"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/cvFinalImage"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextSearch"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/proximanova_regular"
+                    android:maxLines="1"
+                    android:drawableLeft="@drawable/search_icon_field"
+                    android:drawablePadding="10dp"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:textSize="18dp"
+                    android:layout_height="match_parent"
+                    android:imeOptions="actionDone"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Search address"
+                    />
+                <ImageButton
+                    android:id="@+id/btn_search"
+                    android:src="@drawable/ic_arrow_forward_black_24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone" />
+
+                <!--<ImageView-->
+                <!--android:layout_marginLeft="30dp"-->
+                <!--android:layout_weight="0.2"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:src="@drawable/searchgreen" />-->
+                <ProgressBar
+                    android:layout_marginLeft="30dp"
+                    android:layout_weight="0.2"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/Loader"
+                    style="?android:attr/progressBarStyle"
+
+                    android:visibility="gone"
+
+                    />
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/btn_scanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/qr_code_icon" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/toolbar_lay"
+        android:id="@+id/cardlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:visibility="visible"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:descendantFocusability="beforeDescendants"
+                android:focusableInTouchMode="true"
+                android:layout_height="match_parent">
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/emptyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/bottom_sheet_txt_hint_clr"
+            android:fontFamily="@font/proximanova_regular"
+            android:text="Search address with unique name, mobile number and plus code Or you can search address by scanning Qr code."/>
+
+    </RelativeLayout>
+
+</LinearLayout>

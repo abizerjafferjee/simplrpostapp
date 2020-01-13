@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_450sdp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginRight="10dp"
+    android:background="@drawable/bottom_sheet_bg"
+    android:clickable="false"
+    android:descendantFocusability="beforeDescendants"
+    android:elevation="4dp"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:paddingTop="6dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="120dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:clickable="false"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:clickable="false"
+                android:enabled="false"
+                android:fontFamily="@font/proximanova_semibold"
+                android:gravity="right|center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/address_plus_code"
+                android:textColor="@color/bottom_sheet_title_clr"
+                android:textSize="18sp"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/btn_plusCodeInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="right|center"
+                android:background="@android:color/transparent"
+                android:minWidth="30dp"
+                android:minHeight="30dp"
+                android:src="@drawable/ic_info_outline_black_24dp"
+                android:tag="down"
+                android:tint="@color/bottom_sheet_title_clr" />
+
+            <ImageButton
+                android:id="@+id/btn_dropDown"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="6dp"
+                android:background="@android:color/transparent"
+                android:minWidth="40dp"
+                android:minHeight="40dp"
+                android:src="@drawable/card_arrow_up"
+                android:tag="down"
+                android:tint="@color/colorBlack" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bottom_sheet_text_outer_line"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:visibility="invisible" />
+
+            <com.codeapex.simplrpostprod.opencodelocation.code.CodeView
+                android:id="@+id/codeView"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:paddingRight="30dp"
+                android:layout_marginStart="@dimen/code_view_margin" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/proximanova_regular"
+            android:gravity="center"
+            android:text="@string/plusCode_message"
+            android:textColor="@color/bottom_sheet_txt_hint_clr"
+            android:textSize="15sp" />
+
+        <ScrollView
+            android:id="@+id/bottom_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorWhite"
+                android:descendantFocusability="beforeDescendants"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/_6sdp"
+                    android:paddingRight="@dimen/_3sdp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bottom_sheet_text_outer_line"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyledTilEditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <EditText
+                            android:id="@+id/edt_uniqueLink"
+                            style="@style/StyledTilEditTextTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:fontFamily="@font/proximanova_regular"
+                            android:gravity="top|left"
+                            android:hint="@string/unique_link_field_hint"
+                            android:imeOptions="actionDone"
+                            android:singleLine="true"
+                            android:textColor="@color/bottom_sheet_link_clr"
+                            android:textColorHint="@color/bottom_sheet_txt_hint_clr"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageButton
+                        android:id="@+id/btn_uniqueLinkInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center"
+                        android:background="@android:color/transparent"
+                        android:minWidth="30dp"
+                        android:minHeight="30dp"
+                        android:src="@drawable/ic_info_outline_black_24dp"
+                        android:tag="down"
+                        android:tint="@color/bottom_sheet_title_clr" />
+
+                </LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/StyledTilEditTextTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:backgroundTint="@android:color/transparent">
+
+                    <EditText
+                        android:id="@+id/edt_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/transparent"
+                        android:fontFamily="@font/proximanova_regular"
+                        android:gravity="bottom|left"
+                        android:hint="@string/country"
+                        android:imeOptions="actionDone"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/bottom_sheet_txt_hint_clr"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/bottom_sheet_txt_hint_clr" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/StyledTilEditTextTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:visibility="gone"
+                    android:backgroundTint="@android:color/transparent">
+
+                    <EditText
+                        android:id="@+id/edt_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/transparent"
+                        android:fontFamily="@font/proximanova_regular"
+                        android:gravity="bottom|left"
+                        android:visibility="gone"
+                        android:hint="@string/city_town"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/bottom_sheet_txt_hint_clr"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="3dp"
+                    android:visibility="gone"
+                    android:background="@color/bottom_sheet_txt_hint_clr" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyledTilEditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@android:color/transparent">
+
+                        <EditText
+                            android:id="@+id/edt_streetName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:fontFamily="@font/proximanova_regular"
+                            android:gravity="bottom|left"
+                            android:hint="@string/street_road_name_field_hint"
+                            android:textColor="@color/colorBlack"
+                            android:textColorHint="@color/bottom_sheet_txt_hint_clr"
+                            android:textSize="18sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <RelativeLayout
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <ImageView
+                            android:id="@+id/img_street"
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/bottom_sheet_text_outer_line"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/image_placeholder" />
+
+                        <ImageView
+                            android:id="@+id/btn_img_streetClose"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:background="@drawable/close_btn_bg"
+                            android:padding="6dp"
+                            android:src="@drawable/close"
+                            android:tint="@color/colorWhite"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/bottom_sheet_txt_hint_clr" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyledTilEditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@android:color/transparent">
+
+                        <EditText
+                            android:id="@+id/edt_buildingName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:fontFamily="@font/proximanova_regular"
+                            android:gravity="bottom|left"
+                            android:hint="@string/building_field_hint"
+                            android:textColor="@color/colorBlack"
+                            android:textColorHint="@color/bottom_sheet_txt_hint_clr"
+                            android:textSize="18sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <RelativeLayout
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img_building"
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/bottom_sheet_text_outer_line"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/image_placeholder" />
+
+                        <ImageView
+                            android:id="@+id/btn_img_buildingClose"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:background="@drawable/close_btn_bg"
+                            android:padding="6dp"
+                            android:src="@drawable/close"
+                            android:tint="@color/colorWhite"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/bottom_sheet_txt_hint_clr" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyledTilEditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@android:color/transparent">
+
+                        <EditText
+                            android:id="@+id/edt_entranceName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:fontFamily="@font/proximanova_regular"
+                            android:gravity="bottom|left"
+                            android:hint="@string/entrance_field_hint"
+                            android:textColor="@color/colorBlack"
+                            android:textColorHint="@color/bottom_sheet_txt_hint_clr"
+                            android:textSize="18sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <RelativeLayout
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img_entrance"
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/bottom_sheet_text_outer_line"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/image_placeholder" />
+
+                        <ImageView
+                            android:id="@+id/btn_img_entranceClose"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:background="@drawable/close_btn_bg"
+                            android:padding="6dp"
+                            android:src="@drawable/close"
+                            android:tint="@color/colorWhite"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/bottom_sheet_txt_hint_clr" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyledTilEditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@android:color/transparent">
+
+                        <EditText
+                            android:id="@+id/edt_directionTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:fontFamily="@font/proximanova_regular"
+                            android:gravity="bottom|left"
+                            android:hint="Text direction"
+                            android:imeOptions="actionDone"
+                            android:minHeight="70dp"
+                            android:maxLength="250"
+                            android:textColor="@color/colorBlack"
+                            android:textColorHint="@color/bottom_sheet_txt_hint_clr"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageButton
+                        android:id="@+id/btn_directionInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|bottom"
+                        android:background="@android:color/transparent"
+                        android:minWidth="30dp"
+                        android:minHeight="30dp"
+                        android:src="@drawable/ic_info_outline_black_24dp"
+                        android:tag="down"
+                        android:tint="@color/bottom_sheet_title_clr" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/bottom_sheet_txt_hint_clr" />
+
+                <View
+                    android:id="@+id/view_space"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@android:color/transparent"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

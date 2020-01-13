@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.codeapex.simplrpostprod",
+    "sha256_cert_fingerprints":
+    ["C7:BD:FA:AF:6E:97:34:CB:F9:04:5D:B5:1C:AF:18:ED:DA:EE:DF:A8:6E:96:E1:AA:BF:DD:12:F9:32:9E:96:AE"]
+  }
+}]

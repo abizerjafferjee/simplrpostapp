@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="3dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:minWidth="50dp"
+            android:minHeight="50dp"
+            android:src="@drawable/back_arrow_icon" />
+
+        <TextView
+            android:id="@+id/txt_titleHeader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/proximanova_bold"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:text="@string/qr_code"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/btn_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:minWidth="50dp"
+            android:minHeight="50dp"
+            android:tint="@color/colorWhite"
+            android:src="@drawable/ic_file_download_black_24dp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgBarcode"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="56dp"
+        android:scaleType="centerInside"
+        android:layout_below="@+id/tvTitle"
+        android:src="@drawable/qr_code" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvPlusCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgBarcode"
+            android:layout_gravity="center"
+            android:fontFamily="@font/proximanova_regular"
+            android:text="plus_code : W3RW2YZ1+MM"
+            android:textColor="@color/bottom_sheet_title_clr"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|left"
+            android:orientation="vertical"
+            android:layout_marginTop="6dp"
+            android:layout_below="@+id/tvPlusCode">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgBarcode"
+                android:layout_gravity="top"
+                android:fontFamily="@font/proximanova_regular"
+                android:text= "@string/address_link"
+                android:textColor="@color/bottom_sheet_title_clr"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvAddressLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/proximanova_regular"
+                android:text="www.simplrpost.com/abizer's-home"
+                android:textColor="@color/bottom_sheet_link_clr"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvDEscription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/proximanova_regular"
+            android:text="Text description lorem ipsum is simple dummy"
+            android:textColor="@color/bottom_sheet_title_clr"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDEscription"
+            android:layout_gravity="center"
+            android:gravity="left|center"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/proximanova_regular"
+            android:text="Text address : Country/City/Street/Building/Entrance"
+            android:textColor="@color/bottom_sheet_title_clr"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

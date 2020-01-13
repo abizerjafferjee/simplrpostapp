@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_marginTop="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/cardView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp">
+
+
+        <LinearLayout
+            android:id="@+id/llineart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="13dp"
+                android:shape="ring"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="30dp">
+
+                <ImageView
+                    android:id="@+id/imagepublic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile_public" />
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/lnlytPublicContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="7dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/uniqueLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proximanova_semibold"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proximanova_regular"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:textColor="@color/colorBlack"
+                    android:text="" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/pluscode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proximanova_regular"
+                        android:singleLine="true"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text=""
+                        android:textColor="@color/colorBlack" />
+
+                    <TextView
+                        android:id="@+id/tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/proximanova_regular"
+                        android:gravity="center"
+                        android:text=""
+                        android:layout_marginLeft="@dimen/_6sdp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+                <!--<TextView-->
+                <!--android:layout_marginRight="50dp"-->
+                <!--android:visibility="visible"-->
+                <!--android:id="@+id/descrpition"-->
+                <!--android:fontFamily="@font/proximanova_regular"-->
+                <!--android:layout_marginLeft="14dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:maxLines = "2"-->
+                <!--android:text="Hospital"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnlytSharePublic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="12dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/button_corner"
+                android:orientation="horizontal"
+                android:elevation="3dp"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/sharePublic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingRight="@dimen/_10sdp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/proximanova_regular"
+                    android:gravity="center"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"
+                    android:text="Share"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/bottom_sheet_img_clr"/>
+
+
+</LinearLayout>

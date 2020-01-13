@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_sp_tutorial_public"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/sp_tutorial_private"/>
+
+    <TextView
+        android:id="@+id/txt_sp_tutorial_public"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Private Address"
+        android:textSize="20dp"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_sp_tutorial_public"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_sp_tutorial_public"
+        android:text="A Simplr Post private address is only
+visible to people you share it with.\n\n
+Share it with restaurants or courier
+companies through the app to get
+deliveries to your home.\n\n
+Don’t let emergency services get lost
+on their way. Share your address with
+them beforehand so they can find you
+when you need them the most."
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

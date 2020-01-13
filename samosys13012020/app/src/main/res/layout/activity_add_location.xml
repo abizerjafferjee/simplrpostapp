@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="3dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="-6dp"
+                android:background="@android:color/transparent"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                android:src="@drawable/back_arrow_icon" />
+
+            <TextView
+                android:id="@+id/txt_titleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/proximanova_semibold"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:text="@string/add_address"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/save_icon"
+                android:drawablePadding="6dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:gravity="center"
+                android:paddingRight="12dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/btn_share_"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:src="@drawable/ic_share_black_24dp"
+                android:tint="@color/colorWhite"
+                android:background="@android:color/transparent"
+                android:layout_marginRight="3dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="0.5dp"
+            android:background="@color/colorPrimary"
+            android:elevation="3dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_headerPublic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proximanova_bold"
+                    android:gravity="center"
+                    android:text="@string/public_"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18dp" />
+
+                <Switch
+                    android:id="@+id/btn_switchPublicPrivate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:theme="@style/SCBSwitch" />
+
+                <TextView
+                    android:id="@+id/txt_headerPrivate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proximanova_bold"
+                    android:gravity="center"
+                    android:text="@string/private_"
+                    android:textColor="@color/colorgray_"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btn_infoPublicPrivate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:background="@android:color/transparent"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                android:src="@drawable/ic_info_outline_black_24dp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true">
+
+
+            <com.codeapex.simplrpostprod.opencodelocation.map.MyMapView
+                android:id="@+id/myMapView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/edt_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@android:color/transparent"
+                            android:drawableLeft="@drawable/ic_search_black_24dp"
+                            android:drawablePadding="10dp"
+                            android:maxLines="1"
+                            android:textSize="@dimen/_12sdp"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:paddingRight="@dimen/_10sdp"
+                            android:fontFamily="@font/proximanova_regular"
+                            android:gravity="center|left"
+                            android:hint="@string/search"
+                            android:minHeight="45dp"
+                            android:paddingLeft="10dp" />
+
+                        <ImageButton
+                            android:id="@+id/btn_search"
+                            android:src="@drawable/ic_arrow_forward_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:layout_centerInParent="true"
+                            android:layout_marginRight="16dp"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/bottom_sheet_txt_hint_clr" />
+
+                    <ListView
+                        android:id="@+id/searchResultLV"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"></ListView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ImageButton
+                android:id="@+id/btn_currentLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardSearch"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_bg_circle"
+                android:elevation="2dp"
+                android:src="@drawable/current_location" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_pin_static"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/bottom_sheet_add_address" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

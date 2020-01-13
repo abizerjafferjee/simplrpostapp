@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_main"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="3dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:minWidth="50dp"
+            android:minHeight="50dp"
+            android:src="@drawable/back_arrow_icon" />
+
+        <TextView
+            android:id="@+id/txt_titleHeader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/proximanova_semibold"
+            android:gravity="center"
+            android:text="@string/share"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_internalSharing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_share"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cardView"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:paddingBottom="10dp"
+            android:visibility="gone"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="2dp">
+
+            <EditText
+                android:id="@+id/edt_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@android:color/transparent"
+                android:drawableLeft="@drawable/search_icon_field"
+                android:drawablePadding="10dp"
+                android:textSize="@dimen/_13sdp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/proximanova_regular"
+                android:hint="Search via name or mobile number"
+                android:paddingLeft="16dp" />
+        </androidx.cardview.widget.CardView>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_alignParentBottom="true"
+            android:background="#F1EDED" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_externalSharing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.6"
+        android:gravity="left|center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:layout_marginTop="10dp"
+            android:text="Share via external apps"
+            android:fontFamily="@font/proximanova_semibold"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_shareExternal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cardView"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="10dp" />
+    </LinearLayout>
+
+</LinearLayout>

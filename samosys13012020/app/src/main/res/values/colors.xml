@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1bac71</color>
+    <color name="colorPrimaryDark">#0A8858</color>
+    <color name="colorAccent">#1bac71</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhiteE">#FAF9F9</color>
+    <color name="colorBlack">#251E1E</color>
+    <color name="colorgray">#D3CECE</color>
+    <color name="ligftcolorgray">#E7E6E6</color>
+    <color name="colorgrayy">#EBEAEA</color>
+    <color name="transGrey">#50EBEAEA</color>
+    <color name="colorgrayyy">#F5F5F5</color>
+    <color name="colorgray_">#BDBBBB</color>
+    <color name="colorRed">#ff4934</color>
+    <color name="colorBule">#3b5896</color>
+    <color name="colorLightBule">#00a2ff</color>
+    <color name="colorBrown">#e47d5b</color>
+
+
+    <!-- Screens background color-->
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="bg_screen4">#c873f4</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#dcdcdc</color>
+    <color name="dot_dark_screen2">#dcdcdc</color>
+    <color name="dot_dark_screen3">#dcdcdc</color>
+    <color name="dot_dark_screen4">#dcdcdc</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#000</color>
+    <color name="dot_light_screen2">#000</color>
+    <color name="dot_light_screen3">#000</color>
+    <color name="dot_light_screen4">#000</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
+
+    <color name="bottom_sheet_title_clr">#444444</color>
+    <color name="bottom_sheet_subtitle_clr">#707070</color>
+    <color name="bottom_sheet_txt_hint_clr">#A8A8A8</color>
+    <color name="bottom_sheet_img_clr">#C5C5C5</color>
+    <color name="bottom_sheet_link_clr">#0088FF</color>
+
+    <color name="code_box_stroke">#0A8858</color>
+    <color name="code_box_fill">#1bac71</color>
+</resources>

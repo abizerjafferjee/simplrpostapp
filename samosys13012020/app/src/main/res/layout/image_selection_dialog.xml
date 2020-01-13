@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/show"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@drawable/alert_bg"
+    android:minWidth="200dp"
+    android:minHeight="150dp"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    android:visibility="visible">
+
+    <ImageButton
+        android:id="@+id/btn_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|top"
+        android:layout_marginTop="-10dp"
+        android:layout_marginRight="-10dp"
+        android:background="@android:color/transparent"
+        android:minWidth="40dp"
+        android:minHeight="40dp"
+        android:src="@drawable/popup_close_icon"
+        android:tint="@color/colorBlack" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
+        android:layout_marginRight="40dp"
+        android:gravity="left|center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/proximanova_semibold"
+            android:gravity="top|left|center"
+            android:text="Picture of Street/\nCorner/Intersection"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:visibility="visible" />
+
+        <Spinner
+            android:id="@+id/spinnerImageAlert"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="0dp"
+            android:visibility="gone">
+
+        </Spinner>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_subTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="@font/proximanova_regular"
+        android:text="Add an additional layer of security
+to protect your account."
+        android:textColor="@color/colorBlack"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/btn_camera"
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_margin="6dp"
+            android:src="@drawable/ic_camera_alt_black_24dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/proximanova_regular"
+            android:gravity="center"
+            android:text="From camera"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/btn_add"
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_margin="6dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_collections_black_24dp"
+            android:fontFamily="@font/proximanova_regular"
+            android:gravity="center"
+            android:text="From gallery"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            android:visibility="visible" />
+    </LinearLayout>
+</LinearLayout>

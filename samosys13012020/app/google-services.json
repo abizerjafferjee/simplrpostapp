@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "950093293647",
+    "firebase_url": "https://simplr-post-249714.firebaseio.com",
+    "project_id": "simplr-post-249714",
+    "storage_bucket": "simplr-post-249714.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950093293647:android:4c6695f54b4b57701a223a",
+        "android_client_info": {
+          "package_name": "com.codeapex.simplrpostprod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950093293647-ks4agi5hirtn8cvncrvsr3oiiio3pj4a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codeapex.simplrpostprod",
+            "certificate_hash": "8829242febdcd14e0e1b8c0dec14ac6cc43ea1b0"
+          }
+        },
+        {
+          "client_id": "950093293647-47j4rda890uqq5h1cuj0d7j9bhi2041p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl5VL502rKy0BN17ua2PG9j2CcHsAVOtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950093293647-47j4rda890uqq5h1cuj0d7j9bhi2041p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

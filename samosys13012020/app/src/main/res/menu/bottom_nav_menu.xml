@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/profileunfilled"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/magnifyingglassbrowser"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/chat"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_notification"
+        android:icon="@drawable/belliconunfilled"
+        android:title="" />
+
+</menu>

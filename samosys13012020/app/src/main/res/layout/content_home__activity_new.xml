@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:background="@color/colorgrayy"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linearHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_16sdp"
+            android:paddingTop="@dimen/_16sdp"
+            android:paddingBottom="@dimen/_16sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userImage"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:src="@drawable/profileplchlder" />
+                <ProgressBar
+                    android:id="@+id/progressBarImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_centerInParent="true"
+                    android:visibility="visible" />
+
+
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left|center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:fontFamily="@font/proximanova_semibold"
+                    android:text=""
+                    android:textColor="@color/bottom_sheet_title_clr"
+                    android:textSize="@dimen/_15sdp" />
+
+                <TextView
+                    android:id="@+id/txt_mobileNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:fontFamily="@font/proximanova_semibold"
+                    android:text=""
+                    android:textColor="@color/bottom_sheet_subtitle_clr"
+                    android:textSize="@dimen/_12sdp" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btn_editAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/colorWhite"
+                android:src="@drawable/ic_edit"
+                android:tint="@color/colorPrimary" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_msg_profileComplete"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:textColor="@color/colorBlack"
+            android:background="#60BDBBBB"
+            android:visibility="gone"
+            android:text="Complete your profile."
+            android:textSize="15sp"
+            android:fontFamily="@font/proximanova_regular"
+            android:paddingLeft="16dp"
+            android:gravity="left|center"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/linearButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/_3sdp"
+        android:layout_marginLeft="@dimen/_6sdp"
+        android:layout_marginRight="@dimen/_6sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/btn_personal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="@dimen/_6sdp"
+            android:background="@drawable/tab_bg_green_left"
+            android:drawableTint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:fontFamily="@font/proximanova_regular"
+            android:text="Personal"
+            android:elevation="2dp"
+            android:drawableLeft="@drawable/ic_personal"
+            android:drawablePadding="@dimen/_1sdp"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:id="@+id/btn_favorite"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="@dimen/_6sdp"
+            android:elevation="2dp"
+            android:padding="@dimen/_6sdp"
+            android:drawableLeft="@drawable/ic_favourites"
+            android:fontFamily="@font/proximanova_regular"
+            android:text="Favorite"
+            android:background="@color/colorWhite"
+            android:drawableTint="@color/bottom_sheet_title_clr"
+            android:textColor="@color/bottom_sheet_title_clr"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:id="@+id/btn_received"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:padding="@dimen/_6sdp"
+            android:paddingLeft="@dimen/_6sdp"
+            android:gravity="center"
+            android:elevation="2dp"
+            android:fontFamily="@font/proximanova_regular"
+            android:text="Received"
+            android:drawableLeft="@drawable/ic_received"
+            android:background="@drawable/tab_bg_white_right"
+            android:drawableTint="@color/bottom_sheet_title_clr"
+            android:textColor="@color/bottom_sheet_title_clr"
+            android:textSize="@dimen/_14sdp" />
+
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/frgtContainerr"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mobile_navigation" />
+
+</LinearLayout>

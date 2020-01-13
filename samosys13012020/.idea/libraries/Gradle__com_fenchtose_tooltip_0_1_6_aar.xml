@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Gradle: com.fenchtose:tooltip:0.1.6@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8a62de1932610881fdfcef7316dcfdd6/jetified-tooltip-0.1.6/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8a62de1932610881fdfcef7316dcfdd6/jetified-tooltip-0.1.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8a62de1932610881fdfcef7316dcfdd6/jetified-tooltip-0.1.6/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fenchtose/tooltip/0.1.6/61539a49065a890c3658822dd16671afa4ba7069/tooltip-0.1.6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fenchtose/tooltip/0.1.6/d4424f03db9e6eeaaaa469bd9dd7578d4157f266/tooltip-0.1.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
