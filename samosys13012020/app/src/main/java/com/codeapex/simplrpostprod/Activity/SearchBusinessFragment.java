@@ -282,9 +282,9 @@ public class SearchBusinessFragment extends Fragment implements SearchScreenInte
                                 String building_img_type = object.optString("building_img_type");
                                 String entrance_img_type = object.optString("entrance_img_type");
 
-                                if (!userId.equals(sharedPreferences.getString(Constants.userId, ""))) {
-                                    private_address_model.add(new ModelResultPrivateAddress(addressId, userId, userName, profilePicURL, address_tag, latitude, longitude, plus_code, unique_link, country, city, street_name, building_name, entrance_name, direction_text, street_image, building_image, entrance_image, qrCode_image, street_img_type, building_img_type, entrance_img_type));
-                                }
+
+                                private_address_model.add(new ModelResultPrivateAddress(addressId, userId, userName, profilePicURL, address_tag, latitude, longitude, plus_code, unique_link, country, city, street_name, building_name, entrance_name, direction_text, street_image, building_image, entrance_image, qrCode_image, street_img_type, building_img_type, entrance_img_type));
+
                             }
                             emptyText.setVisibility(View.GONE);
                         }
@@ -395,9 +395,9 @@ public class SearchBusinessFragment extends Fragment implements SearchScreenInte
                                 entrance_img_type = "Entrance";
                             }
 
-                            if (!userId.equals(user_Id)) {
-                                private_address_model.add(new ModelResultPrivateAddress(addressId, userId, userName, profilePicURL, address_tag, latitude, longitude, plus_code, unique_link, country, city, street_name, building_name, entrance_name, direction_text, street_image, building_image, entrance_image, qrCode_image, street_img_type, building_img_type, entrance_img_type));
-                            }
+
+                            private_address_model.add(new ModelResultPrivateAddress(addressId, userId, userName, profilePicURL, address_tag, latitude, longitude, plus_code, unique_link, country, city, street_name, building_name, entrance_name, direction_text, street_image, building_image, entrance_image, qrCode_image, street_img_type, building_img_type, entrance_img_type));
+
                         }
                     }
 

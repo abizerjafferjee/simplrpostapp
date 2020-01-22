@@ -78,7 +78,13 @@ public class SignUpFirstActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
-        setContentView(R.layout.activity_sign_up);
+
+        try {
+            setContentView(R.layout.activity_sign_up);
+        } catch (Exception e) {
+            e.printStackTrace();
+            setContentView(R.layout.activity_sign_up);
+        }
 
         /*if (hasPermissions(PERMISSIONS)) {
         } else {
@@ -94,7 +100,6 @@ public class SignUpFirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-
             }
         });
 

@@ -133,6 +133,8 @@ import android.location.Location;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
+import static com.codeapex.simplrpostprod.RetrofitApi.Constants.KEY_FOR_API;
+
 
 /**
  * The home {@link android.app.Activity}. All features are implemented in this Activity. The
@@ -650,6 +652,27 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
             }
         });
 
+        edt_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_ACTION_DONE) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
+                    getClientAddressFromAddress(edt_search.getText().toString());
+                    isSearched = true;
+                    isFromEdit = false;
+                    isCameraIdealActive = false;
+                    hideKeyboard(AddLocation_Activity.this);
+                    if (predictions != null && mAutoCompleteAdapter != null) {
+                        predictions = null;
+                        mAutoCompleteAdapter.clear();
+                        mAutoCompleteAdapter.notifyDataSetChanged();
+                    }
+                    btn_search.setVisibility(View.GONE);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
         mAutoCompleteList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -1127,7 +1150,7 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
         urlString.append("&location=");
         urlString.append(latitude + "," + longitude); // append lat long of current location to show nearby results.
         urlString.append("&radius=500&language=en");
-        urlString.append("&key=" + "AIzaSyBVXQw3qGgpUCqkxIqtcks2VZafV3Xz39g");
+        urlString.append("&key=" + KEY_FOR_API);
 
         Log.d("FINAL URL:::   ", urlString.toString());
         return urlString.toString();
@@ -1217,10 +1240,10 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
         }
         btnCurrentLocation.setEnabled(true);
 
-        Parser.callApi(AddLocation_Activity.this, "Please wait...", false, ApiClient.getClientAddressFromPlaceId().create(ApiInterface.class).getAddressFromAddress(address, "AIzaSyBVXQw3qGgpUCqkxIqtcks2VZafV3Xz39g"), new Response_Call_Back() {
+        Parser.callApi(AddLocation_Activity.this, "Please wait...", false, ApiClient.getClientAddressFromPlaceId().create(ApiInterface.class).getAddressFromAddress(address, KEY_FOR_API), new Response_Call_Back() {
             @Override
             public void getResponseFromServer(String response) {
-                Log.e("Address", "From placeId response::" + response);
+                Log.e("Address auto", "From placeId response::" + response);
                 progressBar.setVisibility(View.INVISIBLE);
 
                 JSONObject jsonObject = null;
@@ -1432,7 +1455,7 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
 
                     } else {
                         Toast.makeText(getApplicationContext(),
-                                "You may check your internet connection or latitude and longitude values", Toast.LENGTH_LONG).show();
+                                "You may check your internet connection.", Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
 
@@ -1456,7 +1479,7 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
         }
         btnCurrentLocation.setEnabled(true);
 
-        Parser.callApi(AddLocation_Activity.this, "Please wait...", false, ApiClient.getClientAddressFromPlaceId().create(ApiInterface.class).getAddressFromAddress(address, "AIzaSyBVXQw3qGgpUCqkxIqtcks2VZafV3Xz39g"), new Response_Call_Back() {
+        Parser.callApi(AddLocation_Activity.this, "Please wait...", false, ApiClient.getClientAddressFromPlaceId().create(ApiInterface.class).getAddressFromAddress(address, KEY_FOR_API), new Response_Call_Back() {
             @Override
             public void getResponseFromServer(String response) {
                 Log.e("Address", "From placeId response::" + response);
@@ -1670,7 +1693,7 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
 
                     } else {
                         Toast.makeText(getApplicationContext(),
-                                "You may check your internet connection or latitude and longitude values", Toast.LENGTH_LONG).show();
+                                "You may check your internet connection.", Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
 
@@ -1694,7 +1717,7 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
         }
         btnCurrentLocation.setEnabled(true);
 
-        Parser.callApi(AddLocation_Activity.this, "Please wait...", false, ApiClient.getClientAddressFromPlaceId().create(ApiInterface.class).getAddressFromAddress(address, "AIzaSyBVXQw3qGgpUCqkxIqtcks2VZafV3Xz39g"), new Response_Call_Back() {
+        Parser.callApi(AddLocation_Activity.this, "Please wait...", false, ApiClient.getClientAddressFromPlaceId().create(ApiInterface.class).getAddressFromAddress(address, KEY_FOR_API), new Response_Call_Back() {
             @Override
             public void getResponseFromServer(String response) {
                 Log.e("Address", "From placeId response::" + response);
@@ -1910,7 +1933,7 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
 
                     } else {
                         Toast.makeText(getApplicationContext(),
-                                "You may check your internet connection or latitude and longitude values", Toast.LENGTH_LONG).show();
+                                "You may check your internet connection.", Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
 
@@ -2625,7 +2648,6 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String result_code = jsonObject.getString("resultCode");
-
                             if (result_code.equals("1")) {
                                 startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class));
                                 finish();
@@ -2638,10 +2660,7 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
                     }
                 });
             }
-
-
         }
-
         dialog.dismiss();
     }
 
