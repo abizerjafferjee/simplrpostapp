@@ -221,25 +221,38 @@
 
                     </LinearLayout>
 
-
                 </androidx.core.widget.NestedScrollView>
 
             </LinearLayout>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <TextView
+        <ImageView
             android:id="@+id/txtError"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No data found."
+            android:layout_width="288dp"
+            android:layout_height="155dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_26sdp"
+            android:layout_marginRight="@dimen/_26sdp"
+            android:layout_marginTop="-40dp"
+            android:fontFamily="@font/proximanova_regular"
+            android:src="@drawable/privatedefault"
+            android:text="No data found."
+            android:textColor="@color/bottom_sheet_txt_hint_clr"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/bottom_sheet_txt_hint_clr"
-            android:fontFamily="@font/proximanova_regular"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtError0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:text="Click on the plus button to add address."/>
+
     </FrameLayout>
 
 

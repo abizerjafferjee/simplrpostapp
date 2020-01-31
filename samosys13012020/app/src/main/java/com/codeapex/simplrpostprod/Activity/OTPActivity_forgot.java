@@ -1,15 +1,20 @@
 package com.codeapex.simplrpostprod.Activity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -81,16 +86,6 @@ public class OTPActivity_forgot extends AppCompatActivity {
             //progressbar = Parser.initProgressDialog(this, "");
         }
 
-        /*new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                layout_dialog.setVisibility(View.GONE);
-                if (progressbar != null) {
-                    progressbar.dismiss();
-                }
-            }
-        }, 5000);*/
-
         btn_verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,8 +105,6 @@ public class OTPActivity_forgot extends AppCompatActivity {
             public void onClick(View v) {
                 onBackPressed();
             }
-
-
         });
 
         resend.setOnClickListener(new View.OnClickListener() {
@@ -193,26 +186,6 @@ public class OTPActivity_forgot extends AppCompatActivity {
                 }
             }
         });
-
-        /*SmsReceiver.bindListener(new SmsListener() {
-            @Override
-            public void messageReceived(String messageText) {
-                otp = messageText;
-                Log.e("OTP:", "OTP __ " + messageText);
-                char one = otp.charAt(0);
-                char two = otp.charAt(1);
-                char three = otp.charAt(2);
-                char four = otp.charAt(3);
-                editText_otp1.setText("" + one);
-                editText_otp2.setText("" + two);
-                editText_otp3.setText("" + three);
-                editText_otp4.setText("" + four);
-                layout_dialog.setVisibility(View.GONE);
-                if (progressbar != null) {
-                    progressbar.dismiss();
-                }
-            }
-        });*/
 
     }
 
@@ -327,15 +300,62 @@ public class OTPActivity_forgot extends AppCompatActivity {
                         String result_code = jsonObject.getString(Constants.RESULT_CODE);
                         if (result_code.equals("1")) {
                             if (from.equals("email_edit")) {
-                                new Message().showSnackGreen(root_lay, "Email verified successfully");
+                                //new Message().showSnackGreen(root_lay, "Email verified successfully");
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        startActivity(new Intent(OTPActivity_forgot.this, Home_Activity_new.class)
-                                                .putExtra("userId", userId).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                        finish();
+
+                                        final Dialog dialog = new Dialog(OTPActivity_forgot.this, R.style.DialogSlideAnim);
+                                        LayoutInflater inflater = getLayoutInflater();
+                                        View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                        dialog.setCancelable(false);
+                                        dialog.setContentView(view);
+
+                                        TextView btn_yes = view.findViewById(R.id.btn_yes);
+                                        TextView btn_no = view.findViewById(R.id.btn_no);
+
+                                        btn_yes.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                startActivity(new Intent(OTPActivity_forgot.this, AddLocation_Activity.class)
+                                                        .putExtra("address_id", "")
+                                                        .putExtra("user_id", "")
+                                                        .putExtra("profile_img", "")
+                                                        .putExtra("user_name", "")
+                                                        .putExtra("plus_code", "")
+                                                        .putExtra("public_private_tag", "")
+                                                        .putExtra("qr_code_img", "")
+                                                        .putExtra("street_img", "")
+                                                        .putExtra("building_img", "")
+                                                        .putExtra("entrance_img", "")
+                                                        .putExtra("address_unique_link", "")
+                                                        .putExtra("country", "")
+                                                        .putExtra("city", "")
+                                                        .putExtra("street", "")
+                                                        .putExtra("building", "")
+                                                        .putExtra("entrance", "")
+                                                        .putExtra("latitude", "")
+                                                        .putExtra("longitude", "")
+                                                        .putExtra("direction_txt", "")
+                                                        .putExtra("from", "add"));
+                                            }
+                                        });
+
+                                        btn_no.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                startActivity(new Intent(OTPActivity_forgot.this, Home_Activity_new.class)
+                                                        .putExtra("userId", userId).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                                finish();
+                                            }
+                                        });
+
+                                        dialog.show();
+
                                     }
                                 }, 300);
+
                             } else {
                                 /*startActivity(new Intent(OTPActivity_forgot.this, GeneratePassword_Activity.class).putExtra("userId", userId).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                                 finish();*/
@@ -349,6 +369,7 @@ public class OTPActivity_forgot extends AppCompatActivity {
                     }
                 }
             });
+
         } else {
             Parser.callApi(OTPActivity_forgot.this, "verifying OTP...", true, ApiClient.getClient().create(ApiInterface.class).validate_otp(otpId, otp, otpType), new Response_Call_Back() {
                 @Override

@@ -241,6 +241,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="-6dp"
                 android:layout_marginTop="1dp"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <Spinner
@@ -272,6 +273,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:visibility="gone"
                 android:background="@color/colorgray_" />
 
             <EditText
@@ -288,7 +290,7 @@
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:textSize="18dp"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <View
                 android:id="@+id/edt_line_answer"

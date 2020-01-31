@@ -103,18 +103,6 @@ public class OTPActivity extends AppCompatActivity {
         resend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                layout_dialog.setVisibility(View.VISIBLE);
-//                progressbar = Parser.initProgressDialog(OTPActivity.this, "");
-
-               /* new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        layout_dialog.setVisibility(View.GONE);
-                        if (progressbar != null) {
-                            progressbar.dismiss();
-                        }
-                    }
-                }, 5000);*/
 
                 Parser.callApi(OTPActivity.this, "Please wait...", false, ApiClient.getClient().create(ApiInterface.class).resend_otp(mobileNumber, otpType), new Response_Call_Back() {
                     @Override
@@ -147,29 +135,6 @@ public class OTPActivity extends AppCompatActivity {
                 });
             }
         });
-
-
-        /*SmsReceiver.bindListener(new SmsListener() {
-            @Override
-            public void messageReceived(String messageText) {
-                otp = messageText;
-                Log.e("OTP:", "OTP __ " + messageText);
-                char one = otp.charAt(0);
-                char two = otp.charAt(1);
-                char three = otp.charAt(2);
-                char four = otp.charAt(3);
-                editText_otp1.setText("" + one);
-                editText_otp2.setText("" + two);
-                editText_otp3.setText("" + three);
-                editText_otp4.setText("" + four);
-
-                layout_dialog.setVisibility(View.GONE);
-                if (progressbar != null) {
-                    progressbar.dismiss();
-                }
-            }
-        });*/
-
     }
 
 
@@ -270,8 +235,9 @@ public class OTPActivity extends AppCompatActivity {
                         editor.putString(Constants.contactNumber, mobileNumber);
                         editor.commit();
 
-                        startActivity(new Intent(OTPActivity.this, Home_Activity_new.class).putExtra("userId", userId)
-                                .putExtra("intent_data",intent_data).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        startActivity(new Intent(OTPActivity.this, EditProfileActivity.class).putExtra("userId", userId)
+                                .putExtra("from","reg")
+                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         finish();
                     } else if (result_code.equals(Constants.RESULT_CODE_MINUS_THREE)) {
                         new Message().showSnack(root_lay, "OTP entered is incorrect.");

@@ -10,6 +10,8 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
@@ -106,6 +108,8 @@ public class EditProfileActivity extends AppCompatActivity {
     View edt_line_answer;
     private SharedPreferences sharedpreferences_session;
     private ProgressBar progressBarImage;
+    String from = "home";
+
     String imgURL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +119,7 @@ public class EditProfileActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
         sharedpreferences_session = getSharedPreferences("Sesssion", Context.MODE_PRIVATE);
 
+        from = this.getIntent().getStringExtra("from");
         name = this.getIntent().getStringExtra("name");
         userId = this.getIntent().getStringExtra("userId");
         emailId = this.getIntent().getStringExtra("emailId");
@@ -227,7 +232,7 @@ public class EditProfileActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
         button.setOnClickListener(new View.OnClickListener() {
@@ -238,13 +243,11 @@ public class EditProfileActivity extends AppCompatActivity {
                     UtilityClass.hideKeyboard(EditProfileActivity.this);
                 }
                 editProfile();
-
             }
         });
 
 
-
-         imgURL = sharedpreferences_session.getString(Constants.profilePicURL, "");
+        imgURL = sharedpreferences_session.getString(Constants.profilePicURL, "");
         Log.e("imgURL","imgURL::"+imgURL);
         if (imgURL != null && !imgURL.isEmpty()) {
             dpimg = Constants.IMG_URL + imgURL;
@@ -306,6 +309,17 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (from!=null && from.equals("reg")){
+            startActivity(new Intent(EditProfileActivity.this,HomeActivity.class)
+            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            finish();
+        }else {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -474,19 +488,12 @@ public class EditProfileActivity extends AppCompatActivity {
                     new Message().showSnack(root_lay, "Invalid email address.");
                     edtEmail.requestFocus();
                     return;
-                } else if (spinnerValue.trim().equals("0Security question")) {
-                    new Message().showSnack(root_lay, "Please select security question.");
-                    return;
-                } else if (edt_answer.getText().toString().trim().length() == 0) {
-                    new Message().showSnack(root_lay, "Please enter answer.");
-                    edt_answer.requestFocus();
-                    return;
-                } else if (imageFile == null) {
+                } else if(imageFile == null) {
                     //new Message().showSnack(root_lay, "Image null");
                     name = edtName.getText().toString().trim();
                     emailId = edtEmail.getText().toString().trim();
                     contactNumber = txt_contactNumber.getText().toString().trim();
-///code by khushbu
+                    ///code by khushbu
                     if(imgURL==null){
                         updateProfile("remove");
                     }else {
@@ -518,14 +525,14 @@ public class EditProfileActivity extends AppCompatActivity {
         RequestBody userId_ = RequestBody.create(MediaType.parse("multipart/form-data"), userId);
         RequestBody contactNumber_ = RequestBody.create(MediaType.parse("multipart/form-data"), contactNumber);
         RequestBody emailId_ = RequestBody.create(MediaType.parse("multipart/form-data"), emailId);
-        RequestBody security_question_ = RequestBody.create(MediaType.parse("multipart/form-data"), spinnerValue);
-        RequestBody security_answer_ = RequestBody.create(MediaType.parse("multipart/form-data"), edt_answer.getText().toString());
+        //RequestBody security_question_ = RequestBody.create(MediaType.parse("multipart/form-data"), spinnerValue);
+        //RequestBody security_answer_ = RequestBody.create(MediaType.parse("multipart/form-data"), edt_answer.getText().toString());
         RequestBody name_ = RequestBody.create(MediaType.parse("multipart/form-data"), name);
         RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile);
         MultipartBody.Part body = MultipartBody.Part.createFormData(Constants.profilePicURL, imageFile.getName(), requestFile);
 
 
-        Parser.callApi(EditProfileActivity.this, "Sign In...", true, ApiClient.getClient().create(ApiInterface.class).updateProfileMultipart(userId_, contactNumber_, emailId_, security_question_, security_answer_, name_, body), new Response_Call_Back() {
+        Parser.callApi(EditProfileActivity.this, "Sign In...", true, ApiClient.getClient().create(ApiInterface.class).updateProfileMultipart(userId_, contactNumber_, emailId_, name_, body), new Response_Call_Back() {
             @Override
             public void getResponseFromServer(String response) {
                 Log.e("Edit response::", "" + response);
@@ -549,13 +556,60 @@ public class EditProfileActivity extends AppCompatActivity {
                                     .putExtra("mobileNumber", contactNumber));
 
                         } else {
-                            new Message().showSnackGreen(root_lay, "Profile updated successfully!");
+                            //new Message().showSnackGreen(root_lay, "Profile updated successfully!");
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    startActivity(new Intent(EditProfileActivity.this, Home_Activity_new.class)
-                                            .putExtra("userId", userId));
-                                    finish();
+                                    final Dialog dialog = new Dialog(EditProfileActivity.this, R.style.DialogSlideAnim);
+                                    LayoutInflater inflater = getLayoutInflater();
+                                    View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    dialog.setCancelable(false);
+                                    dialog.setContentView(view);
+
+                                    TextView btn_yes = view.findViewById(R.id.btn_yes);
+                                    TextView btn_no = view.findViewById(R.id.btn_no);
+
+                                    btn_yes.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            dialog.dismiss();
+                                            startActivity(new Intent(EditProfileActivity.this, AddLocation_Activity.class)
+                                                    .putExtra("address_id", "")
+                                                    .putExtra("user_id", "")
+                                                    .putExtra("profile_img", "")
+                                                    .putExtra("user_name", "")
+                                                    .putExtra("plus_code", "")
+                                                    .putExtra("public_private_tag", "")
+                                                    .putExtra("qr_code_img", "")
+                                                    .putExtra("street_img", "")
+                                                    .putExtra("building_img", "")
+                                                    .putExtra("entrance_img", "")
+                                                    .putExtra("address_unique_link", "")
+                                                    .putExtra("country", "")
+                                                    .putExtra("city", "")
+                                                    .putExtra("street", "")
+                                                    .putExtra("building", "")
+                                                    .putExtra("entrance", "")
+                                                    .putExtra("latitude", "")
+                                                    .putExtra("longitude", "")
+                                                    .putExtra("direction_txt", "")
+                                                    .putExtra("from", "profile")
+                                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                            finish();
+                                        }
+                                    });
+
+                                    btn_no.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            startActivity(new Intent(EditProfileActivity.this, Home_Activity_new.class)
+                                                    .putExtra("userId", userId).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                            finish();
+                                        }
+                                    });
+
+                                    dialog.show();
                                 }
                             }, 300);
                         }
@@ -606,13 +660,60 @@ public class EditProfileActivity extends AppCompatActivity {
                                     .putExtra("mobileNumber", contactNumber));
 
                         } else {
-                            new Message().showSnackGreen(root_lay, "Profile updated successfully!");
+                            //new Message().showSnackGreen(root_lay, "Profile updated successfully!");
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    startActivity(new Intent(EditProfileActivity.this, Home_Activity_new.class)
-                                            .putExtra("userId", userId));
-                                    finish();
+                                    final Dialog dialog = new Dialog(EditProfileActivity.this, R.style.DialogSlideAnim);
+                                    LayoutInflater inflater = getLayoutInflater();
+                                    View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    dialog.setCancelable(false);
+                                    dialog.setContentView(view);
+
+                                    TextView btn_yes = view.findViewById(R.id.btn_yes);
+                                    TextView btn_no = view.findViewById(R.id.btn_no);
+
+                                    btn_yes.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            dialog.dismiss();
+                                            startActivity(new Intent(EditProfileActivity.this, AddLocation_Activity.class)
+                                                    .putExtra("address_id", "")
+                                                    .putExtra("user_id", "")
+                                                    .putExtra("profile_img", "")
+                                                    .putExtra("user_name", "")
+                                                    .putExtra("plus_code", "")
+                                                    .putExtra("public_private_tag", "")
+                                                    .putExtra("qr_code_img", "")
+                                                    .putExtra("street_img", "")
+                                                    .putExtra("building_img", "")
+                                                    .putExtra("entrance_img", "")
+                                                    .putExtra("address_unique_link", "")
+                                                    .putExtra("country", "")
+                                                    .putExtra("city", "")
+                                                    .putExtra("street", "")
+                                                    .putExtra("building", "")
+                                                    .putExtra("entrance", "")
+                                                    .putExtra("latitude", "")
+                                                    .putExtra("longitude", "")
+                                                    .putExtra("direction_txt", "")
+                                                    .putExtra("from", "profile")
+                                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                            finish();
+                                        }
+                                    });
+
+                                    btn_no.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            startActivity(new Intent(EditProfileActivity.this, Home_Activity_new.class)
+                                                    .putExtra("userId", userId).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                            finish();
+                                        }
+                                    });
+
+                                    dialog.show();
                                 }
                             }, 300);
                         }
@@ -626,7 +727,6 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 
     }
-
 }
 
 

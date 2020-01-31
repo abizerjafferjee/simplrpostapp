@@ -92,7 +92,7 @@ public class SignUpFirstActivity extends AppCompatActivity {
                 requestPermissions(PERMISSIONS, REQUEST_CODE_ASK_PERMISSIONS);
             }
         }*/
-        //============================FindView and Listners=======================================//
+        //============================FindView and Listeners=======================================//
 
         back_press = findViewById(R.id.back_press);
         btn_signIn = findViewById(R.id.btn_signIn);
@@ -432,7 +432,6 @@ public class SignUpFirstActivity extends AppCompatActivity {
                                         intent.putExtra("user_id", user_Id);
                                         intent.putExtra("mobile", mobileNumber);
                                         intent.putExtra("from", "signUp");
-
                                         startActivity(intent);
                                     }
                                 }, 300);

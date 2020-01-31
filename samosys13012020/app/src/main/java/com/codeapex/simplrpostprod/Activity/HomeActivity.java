@@ -61,9 +61,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
             fragmentManager.beginTransaction().add(R.id.frgtContainerr, profilefragment, "home").commit();
-
             tabLayout = findViewById(R.id.sliding);
 
             //getting profile data
@@ -142,7 +140,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     //Method to call API
-
     public void getAddressId() {
         if (UtilityClass.isNetworkConnected(HomeActivity.this)) {
             SharedPreferences preferences = getSharedPreferences("Sesssion", MODE_PRIVATE);

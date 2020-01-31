@@ -41,7 +41,6 @@ import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 
-import com.androidnetworking.utils.Utils;
 import com.codeapex.simplrpostprod.Adapter.AutoCompleteAdapter;
 import com.codeapex.simplrpostprod.LocalDatabase.SimplrPostDBOpenHelper;
 import com.codeapex.simplrpostprod.ModelClass.PlacePredictions;
@@ -56,18 +55,15 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Currency;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -78,7 +74,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
-import android.location.Criteria;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -89,10 +84,8 @@ import android.view.LayoutInflater;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -109,7 +102,6 @@ import com.codeapex.simplrpostprod.UtilityClass.Api_utils.ApiInterface;
 import com.codeapex.simplrpostprod.UtilityClass.Api_utils.Parser;
 import com.codeapex.simplrpostprod.UtilityClass.Api_utils.Response_Call_Back;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -125,7 +117,6 @@ import java.util.Locale;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.internal.Util;
 
 import android.location.LocationListener;
 import android.location.Location;
@@ -1138,6 +1129,20 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
      * Choose a language you want to fetch data in
      * Append your google API Browser key
      */
+
+    @Override
+    public void onBackPressed() {
+
+        if (from != null && from.equals("profile")) {
+           startActivity(new Intent(AddLocation_Activity.this,Home_Activity_new.class)
+           .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+           finish();
+
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     public String getPlaceAutoCompleteUrl_(String input) {
         StringBuilder urlString = new StringBuilder();
         urlString.append("https://maps.googleapis.com/maps/api/place/autocomplete/json");
@@ -2058,8 +2063,46 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
                                         String result_code = jsonObject.getString("resultCode");
 
                                         if (result_code.equals("1")) {
-                                            startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class));
-                                            finish();
+                                            JSONObject resultData = jsonObject.getJSONObject("resultData");
+                                            JSONObject addressId = resultData.getJSONObject("addressId");
+
+                                            final Dialog dialog = new Dialog(AddLocation_Activity.this, R.style.DialogSlideAnim);
+                                            LayoutInflater inflater = getLayoutInflater();
+                                            View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                            dialog.setCancelable(false);
+                                            dialog.setContentView(view);
+
+                                            TextView txt_title = view.findViewById(R.id.txt_title);
+                                            TextView btn_yes = view.findViewById(R.id.btn_yes);
+                                            TextView btn_no = view.findViewById(R.id.btn_no);
+
+                                            btn_yes.setText("Share");
+                                            txt_title.setText("Your address has been created, share now.");
+                                            btn_yes.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    dialog.dismiss();
+                                                    startActivity(new Intent(AddLocation_Activity.this, Activity_Share.class)
+                                                            .putExtra("is_owner", "true")
+                                                            .putExtra("is_private", public_private_tag)
+                                                            .putExtra("shareDirect", false)
+                                                            .putExtra("unique_link", addressId.optString("unique_link"))
+                                                            .putExtra("address_id", addressId.optString("addressId")));
+                                                }
+                                            });
+
+                                            btn_no.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    dialog.dismiss();
+                                                    startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class)
+                                                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                                    finish();
+                                                }
+                                            });
+
+                                            dialog.show();
                                         } else if (result_code.equals("0")) {
                                             new Message().showSnack(layout_main, "" + jsonObject.optString("resultData"));
                                         }
@@ -2078,8 +2121,46 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
                                         String result_code = jsonObject.getString("resultCode");
 
                                         if (result_code.equals("1")) {
-                                            startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class));
-                                            finish();
+                                            JSONObject resultData = jsonObject.getJSONObject("resultData");
+                                            JSONObject addressId = resultData.getJSONObject("addressId");
+
+                                            final Dialog dialog = new Dialog(AddLocation_Activity.this, R.style.DialogSlideAnim);
+                                            LayoutInflater inflater = getLayoutInflater();
+                                            View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                            dialog.setCancelable(false);
+                                            dialog.setContentView(view);
+
+                                            TextView txt_title = view.findViewById(R.id.txt_title);
+                                            TextView btn_yes = view.findViewById(R.id.btn_yes);
+                                            TextView btn_no = view.findViewById(R.id.btn_no);
+
+                                            btn_yes.setText("Share");
+                                            txt_title.setText("Your address has been created, share now.");
+                                            btn_yes.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    dialog.dismiss();
+                                                    startActivity(new Intent(AddLocation_Activity.this, Activity_Share.class)
+                                                            .putExtra("is_owner", "true")
+                                                            .putExtra("is_private", public_private_tag)
+                                                            .putExtra("shareDirect", false)
+                                                            .putExtra("unique_link", addressId.optString("unique_link"))
+                                                            .putExtra("address_id", addressId.optString("addressId")));
+                                                }
+                                            });
+
+                                            btn_no.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    dialog.dismiss();
+                                                    startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class)
+                                                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                                    finish();
+                                                }
+                                            });
+
+                                            dialog.show();
                                         } else if (result_code.equals("0")) {
                                             new Message().showSnack(layout_main, "" + jsonObject.optString("resultData"));
                                         }
@@ -2236,8 +2317,46 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
                                     String result_code = jsonObject.getString("resultCode");
 
                                     if (result_code.equals("1")) {
-                                        startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class));
-                                        finish();
+                                        JSONObject resultData = jsonObject.getJSONObject("resultData");
+                                        JSONObject addressId = resultData.getJSONObject("addressId");
+
+                                        final Dialog dialog = new Dialog(AddLocation_Activity.this, R.style.DialogSlideAnim);
+                                        LayoutInflater inflater = getLayoutInflater();
+                                        View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                        dialog.setCancelable(false);
+                                        dialog.setContentView(view);
+
+                                        TextView txt_title = view.findViewById(R.id.txt_title);
+                                        TextView btn_yes = view.findViewById(R.id.btn_yes);
+                                        TextView btn_no = view.findViewById(R.id.btn_no);
+
+                                        btn_yes.setText("Share");
+                                        txt_title.setText("Your address has been created, share now.");
+                                        btn_yes.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                dialog.dismiss();
+                                                startActivity(new Intent(AddLocation_Activity.this, Activity_Share.class)
+                                                        .putExtra("is_owner", "true")
+                                                        .putExtra("is_private", public_private_tag)
+                                                        .putExtra("shareDirect", false)
+                                                        .putExtra("unique_link", addressId.optString("unique_link"))
+                                                        .putExtra("address_id", addressId.optString("addressId")));
+                                            }
+                                        });
+
+                                        btn_no.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                dialog.dismiss();
+                                                startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class)
+                                                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                                finish();
+                                            }
+                                        });
+
+                                        dialog.show();
                                     } else if (result_code.equals("0")) {
                                         new Message().showSnack(layout_main, "" + jsonObject.optString("data"));
                                     }
@@ -2262,8 +2381,46 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
                                     String result_code = jsonObject.getString("resultCode");
 
                                     if (result_code.equals("1")) {
-                                        startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class));
-                                        finish();
+                                        JSONObject resultData = jsonObject.getJSONObject("resultData");
+                                        JSONObject addressId = resultData.getJSONObject("addressId");
+
+                                        final Dialog dialog = new Dialog(AddLocation_Activity.this, R.style.DialogSlideAnim);
+                                        LayoutInflater inflater = getLayoutInflater();
+                                        View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                        dialog.setCancelable(false);
+                                        dialog.setContentView(view);
+
+                                        TextView txt_title = view.findViewById(R.id.txt_title);
+                                        TextView btn_yes = view.findViewById(R.id.btn_yes);
+                                        TextView btn_no = view.findViewById(R.id.btn_no);
+
+                                        btn_yes.setText("Share");
+                                        txt_title.setText("Your address has been created, share now.");
+                                        btn_yes.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                dialog.dismiss();
+                                                startActivity(new Intent(AddLocation_Activity.this, Activity_Share.class)
+                                                        .putExtra("is_owner", "true")
+                                                        .putExtra("is_private", public_private_tag)
+                                                        .putExtra("shareDirect", false)
+                                                        .putExtra("unique_link", addressId.optString("unique_link"))
+                                                        .putExtra("address_id", addressId.optString("addressId")));
+                                            }
+                                        });
+
+                                        btn_no.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                dialog.dismiss();
+                                                startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class)
+                                                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                                finish();
+                                            }
+                                        });
+
+                                        dialog.show();
                                     } else if (result_code.equals("0")) {
                                         new Message().showSnack(layout_main, "" + jsonObject.optString("data"));
                                     }
@@ -2430,8 +2587,48 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
                                 String result_code = jsonObject.getString("resultCode");
 
                                 if (result_code.equals("1")) {
-                                    startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class));
-                                    finish();
+
+                                    JSONObject resultData = jsonObject.getJSONObject("resultData");
+                                    JSONObject addressId = resultData.getJSONObject("addressId");
+
+                                    final Dialog dialog = new Dialog(AddLocation_Activity.this, R.style.DialogSlideAnim);
+                                    LayoutInflater inflater = getLayoutInflater();
+                                    View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    dialog.setCancelable(false);
+                                    dialog.setContentView(view);
+
+                                    TextView txt_title = view.findViewById(R.id.txt_title);
+                                    TextView btn_yes = view.findViewById(R.id.btn_yes);
+                                    TextView btn_no = view.findViewById(R.id.btn_no);
+
+                                    btn_yes.setText("Share");
+                                    txt_title.setText("Your address has been created, share now.");
+                                    btn_yes.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            dialog.dismiss();
+                                            startActivity(new Intent(AddLocation_Activity.this, Activity_Share.class)
+                                                    .putExtra("is_owner", "true")
+                                                    .putExtra("is_private", public_private_tag)
+                                                    .putExtra("shareDirect", false)
+                                                    .putExtra("unique_link", addressId.optString("unique_link"))
+                                                    .putExtra("address_id", addressId.optString("addressId")));
+                                        }
+                                    });
+
+                                    btn_no.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            dialog.dismiss();
+                                            startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class)
+                                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                            finish();
+                                        }
+                                    });
+
+                                    dialog.show();
+
                                 } else if (result_code.equals("0")) {
                                     new Message().showSnack(layout_main, "" + jsonObject.optString("resultData"));
                                 }
@@ -2454,8 +2651,46 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
                                 String result_code = jsonObject.getString("resultCode");
 
                                 if (result_code.equals("1")) {
-                                    startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class));
-                                    finish();
+                                    JSONObject resultData = jsonObject.getJSONObject("resultData");
+                                    JSONObject addressId = resultData.getJSONObject("addressId");
+
+                                    final Dialog dialog = new Dialog(AddLocation_Activity.this, R.style.DialogSlideAnim);
+                                    LayoutInflater inflater = getLayoutInflater();
+                                    View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    dialog.setCancelable(false);
+                                    dialog.setContentView(view);
+
+                                    TextView txt_title = view.findViewById(R.id.txt_title);
+                                    TextView btn_yes = view.findViewById(R.id.btn_yes);
+                                    TextView btn_no = view.findViewById(R.id.btn_no);
+
+                                    btn_yes.setText("Share");
+                                    txt_title.setText("Your address has been created, share now.");
+                                    btn_yes.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            dialog.dismiss();
+                                            startActivity(new Intent(AddLocation_Activity.this, Activity_Share.class)
+                                                    .putExtra("is_owner", "true")
+                                                    .putExtra("is_private", public_private_tag)
+                                                    .putExtra("shareDirect", false)
+                                                    .putExtra("unique_link", addressId.optString("unique_link"))
+                                                    .putExtra("address_id", addressId.optString("addressId")));
+                                        }
+                                    });
+
+                                    btn_no.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            dialog.dismiss();
+                                            startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class)
+                                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                            finish();
+                                        }
+                                    });
+
+                                    dialog.show();
                                 } else if (result_code.equals("0")) {
                                     new Message().showSnack(layout_main, "" + jsonObject.optString("resultData"));
                                 }
@@ -2617,8 +2852,47 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
                                     String result_code = jsonObject.getString("resultCode");
 
                                     if (result_code.equals("1")) {
-                                        startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class));
-                                        finish();
+
+                                        JSONObject resultData = jsonObject.getJSONObject("resultData");
+                                        JSONObject addressId = resultData.getJSONObject("addressId");
+
+                                        final Dialog dialog = new Dialog(AddLocation_Activity.this, R.style.DialogSlideAnim);
+                                        LayoutInflater inflater = getLayoutInflater();
+                                        View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                        dialog.setCancelable(false);
+                                        dialog.setContentView(view);
+
+                                        TextView txt_title = view.findViewById(R.id.txt_title);
+                                        TextView btn_yes = view.findViewById(R.id.btn_yes);
+                                        TextView btn_no = view.findViewById(R.id.btn_no);
+
+                                        btn_yes.setText("Share");
+                                        txt_title.setText("Your address has been created, share now.");
+                                        btn_yes.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                dialog.dismiss();
+                                                startActivity(new Intent(AddLocation_Activity.this, Activity_Share.class)
+                                                        .putExtra("is_owner", "true")
+                                                        .putExtra("is_private", public_private_tag)
+                                                        .putExtra("shareDirect", false)
+                                                        .putExtra("unique_link", addressId.optString("unique_link"))
+                                                        .putExtra("address_id", addressId.optString("addressId")));
+                                            }
+                                        });
+
+                                        btn_no.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                dialog.dismiss();
+                                                startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class)
+                                                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                                finish();
+                                            }
+                                        });
+
+                                        dialog.show();
                                     } else if (result_code.equals("0")) {
                                         new Message().showSnack(layout_main, "" + jsonObject.optString("data"));
                                     }
@@ -2628,20 +2902,14 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
                             }
                         });
             } else {
-                Log.e("khushbu", "street_image::" + street_image);
-                Log.e("khushbu", "building_image::" + building_image);
-                Log.e("khushbu", "entrance_image::" + entrance_image);
 
-                Log.e("khushbu", "street_img_remove::" + street_img_remove);
-                Log.e("khushbu", "building_img_remove::" + building_img_remove);
-                Log.e("khushbu", "enterance_img_remove::" + enterance_img_remove);
                 Parser.callApi(AddLocation_Activity.this, "Please wait...", true, ApiClient.getClient().create(ApiInterface.class).editPublicPrivateAddressWithImage(user_id, addressId, address_tag, address_tag, latitude_, longitude_,
                         plus_code, unique_link, country, city, street_name, building_name, entrance_name,
-                        street_img_remove
-                        , building_img_remove,
+                        street_img_remove, building_img_remove,
                         enterance_img_remove,
                         direction_text, street_img_type_, building_img_type_,
                         entrance_img_type_, street_image, building_image, entrance_image), new Response_Call_Back() {
+
                     @Override
                     public void getResponseFromServer(String response) {
                         Log.e("EDIT Public ", "Location response::" + response);
@@ -2649,8 +2917,46 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
                             JSONObject jsonObject = new JSONObject(response);
                             String result_code = jsonObject.getString("resultCode");
                             if (result_code.equals("1")) {
-                                startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class));
-                                finish();
+                                JSONObject resultData = jsonObject.getJSONObject("resultData");
+                                JSONObject addressId = resultData.getJSONObject("addressId");
+
+                                final Dialog dialog = new Dialog(AddLocation_Activity.this, R.style.DialogSlideAnim);
+                                LayoutInflater inflater = getLayoutInflater();
+                                View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                dialog.setCancelable(false);
+                                dialog.setContentView(view);
+
+                                TextView txt_title = view.findViewById(R.id.txt_title);
+                                TextView btn_yes = view.findViewById(R.id.btn_yes);
+                                TextView btn_no = view.findViewById(R.id.btn_no);
+
+                                btn_yes.setText("Share");
+                                txt_title.setText("Your address has been created, share now.");
+                                btn_yes.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialog.dismiss();
+                                        startActivity(new Intent(AddLocation_Activity.this, Activity_Share.class)
+                                                .putExtra("is_owner", "true")
+                                                .putExtra("is_private", public_private_tag)
+                                                .putExtra("shareDirect", false)
+                                                .putExtra("unique_link", addressId.optString("unique_link"))
+                                                .putExtra("address_id", addressId.optString("addressId")));
+                                    }
+                                });
+
+                                btn_no.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialog.dismiss();
+                                        startActivity(new Intent(AddLocation_Activity.this, Home_Activity_new.class)
+                                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                        finish();
+                                    }
+                                });
+
+                                dialog.show();
                             } else if (result_code.equals("0")) {
                                 new Message().showSnack(layout_main, "" + jsonObject.optString("data"));
                             }

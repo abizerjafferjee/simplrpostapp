@@ -63,7 +63,8 @@ public class ProfileFragment extends Fragment implements ProfileScreenInterface,
     List<ModelResultPrivateAddress> private_address_model = new ArrayList<>();
     SharedPreferences preferences;
     String userId, name, emailId, contactNumber, dpimg, isEmailIdVerified, isContactNumberVerified;
-    TextView text,txtError, txt_contactNumber, txt_msg_profileComplete;
+    TextView text, txtError0,txt_contactNumber, txt_msg_profileComplete;
+    ImageView txtError;
     String question, answer;
     ProfileScreenInterface intProfile;
     ConstraintLayout consEmptyScreen;
@@ -90,6 +91,7 @@ public class ProfileFragment extends Fragment implements ProfileScreenInterface,
         txt_contactNumber = view.findViewById(R.id.txt_contactNumber);
         progressBarImage = view.findViewById(R.id.progressBarImage);
         txtError = view.findViewById(R.id.txtError);
+        txtError0 = view.findViewById(R.id.txtError0);
 
         txt_msg_profileComplete = view.findViewById(R.id.txt_msg_profileComplete);
 
@@ -137,7 +139,6 @@ public class ProfileFragment extends Fragment implements ProfileScreenInterface,
         recyclerView.setAdapter(custom_adaterFriends);
         get_profile();
 
-        //Toast.makeText(getContext(),"hello",Toast.LENGTH_LONG).show();
         swipeRefreshLayout.setRefreshing(false);
     }
 
@@ -513,8 +514,10 @@ public class ProfileFragment extends Fragment implements ProfileScreenInterface,
 
                             if (private_address_model.isEmpty()){
                                 txtError.setVisibility(View.VISIBLE);
+                                txtError0.setVisibility(View.VISIBLE);
                             }else {
                                 txtError.setVisibility(View.GONE);
+                                txtError0.setVisibility(View.GONE);
                             }
                             if (getActivity()!=null) {
                                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -538,6 +541,7 @@ public class ProfileFragment extends Fragment implements ProfileScreenInterface,
             } else {
                 new Message().showSnack(view.findViewById(R.id.root_lay), Constants.noInternetMessage);
             }
+
         } catch (Exception e) {
         }
     }

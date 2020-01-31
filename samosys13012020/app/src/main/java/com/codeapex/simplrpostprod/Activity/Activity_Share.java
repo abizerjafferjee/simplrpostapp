@@ -68,8 +68,7 @@ public class Activity_Share extends Activity {
         address_id = this.getIntent().getStringExtra("address_id");
         unique_link = this.getIntent().getStringExtra("unique_link");
 
-        Log.e("public or_private",""+public_or_private);
-        Log.e("public unique_link",""+unique_link);
+        Log.e("unique_link","unique_link"+unique_link);
         findViews();
         getExternalApps();
 

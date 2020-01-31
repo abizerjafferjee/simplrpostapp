@@ -107,8 +107,6 @@ public interface ApiInterface {
             @Part(Constants.userId) RequestBody UserId,
             @Part(Constants.contactno) RequestBody FcmId,
             @Part(Constants.email_id) RequestBody Fullname,
-            @Part("security_question") RequestBody Email,
-            @Part("security_answer") RequestBody Phone,
             @Part(Constants.namee) RequestBody Dob,
             @Part MultipartBody.Part image
     );

@@ -547,11 +547,6 @@ class Home_Activity_new : AppCompatActivity(), NavigationView.OnNavigationItemSe
                                     }
                                 }
 
-                                if (question.equals("") || question.equals("null") || question==null) {
-                                    txt_msg_profileComplete.visibility = View.VISIBLE
-                                } else {
-                                    txt_msg_profileComplete.visibility = View.GONE
-                                }
 
                                 val sharedPreferences = this@Home_Activity_new!!.getSharedPreferences("Sesssion", MODE_PRIVATE)
                                 val editor = sharedPreferences.edit()
@@ -589,7 +584,6 @@ class Home_Activity_new : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
                                     } else {
                                         userImage!!.setImageResource(R.drawable.profileplchlder)
-
                                     }
                                 } else {
                                     editor.putString(Constants.profilePicURL, "")

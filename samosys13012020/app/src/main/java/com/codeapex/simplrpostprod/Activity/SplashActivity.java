@@ -65,6 +65,7 @@ public class SplashActivity extends AppCompatActivity {
             String prefix = idStr;
             String newUrl = "http://simplrpost.com/"+prefix;
             Log.e("newUrl",""+newUrl);
+
             SharedPreferences preferences = getSharedPreferences("Sesssion", MODE_PRIVATE);
             struserId = preferences.getBoolean(Constants.isUserLoggedIn, false);
 
