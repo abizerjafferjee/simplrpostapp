@@ -300,61 +300,19 @@ public class OTPActivity_forgot extends AppCompatActivity {
                         String result_code = jsonObject.getString(Constants.RESULT_CODE);
                         if (result_code.equals("1")) {
                             if (from.equals("email_edit")) {
-                                //new Message().showSnackGreen(root_lay, "Email verified successfully");
+                                new Message().showSnackGreen(root_lay, "Email verified successfully.");
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
 
-                                        final Dialog dialog = new Dialog(OTPActivity_forgot.this, R.style.DialogSlideAnim);
-                                        LayoutInflater inflater = getLayoutInflater();
-                                        View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
-                                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                                        dialog.setCancelable(false);
-                                        dialog.setContentView(view);
-
-                                        TextView btn_yes = view.findViewById(R.id.btn_yes);
-                                        TextView btn_no = view.findViewById(R.id.btn_no);
-
-                                        btn_yes.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                startActivity(new Intent(OTPActivity_forgot.this, AddLocation_Activity.class)
-                                                        .putExtra("address_id", "")
-                                                        .putExtra("user_id", "")
-                                                        .putExtra("profile_img", "")
-                                                        .putExtra("user_name", "")
-                                                        .putExtra("plus_code", "")
-                                                        .putExtra("public_private_tag", "")
-                                                        .putExtra("qr_code_img", "")
-                                                        .putExtra("street_img", "")
-                                                        .putExtra("building_img", "")
-                                                        .putExtra("entrance_img", "")
-                                                        .putExtra("address_unique_link", "")
-                                                        .putExtra("country", "")
-                                                        .putExtra("city", "")
-                                                        .putExtra("street", "")
-                                                        .putExtra("building", "")
-                                                        .putExtra("entrance", "")
-                                                        .putExtra("latitude", "")
-                                                        .putExtra("longitude", "")
-                                                        .putExtra("direction_txt", "")
-                                                        .putExtra("from", "add"));
-                                            }
-                                        });
-
-                                        btn_no.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                startActivity(new Intent(OTPActivity_forgot.this, Home_Activity_new.class)
-                                                        .putExtra("userId", userId).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                                finish();
-                                            }
-                                        });
-
-                                        dialog.show();
+                                        startActivity(new Intent(OTPActivity_forgot.this, Home_Activity_new.class)
+                                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                        finish();
 
                                     }
-                                }, 300);
+                                }, 600);
+
+
 
                             } else {
                                 /*startActivity(new Intent(OTPActivity_forgot.this, GeneratePassword_Activity.class).putExtra("userId", userId).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));

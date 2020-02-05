@@ -89,10 +89,10 @@ class Home_Activity_new : AppCompatActivity(), NavigationView.OnNavigationItemSe
     var question: String? = null
     var answer: String? = null
     var drawerLayout: DrawerLayout? = null
-    var txtMsgProfilecomplete : TextView? = null
+    var txtMsgProfilecomplete: TextView? = null
 
     companion object {
-         var main_layout_home: CoordinatorLayout? = null
+        var main_layout_home: CoordinatorLayout? = null
     }
 
     @SuppressLint("RestrictedApi")
@@ -103,7 +103,6 @@ class Home_Activity_new : AppCompatActivity(), NavigationView.OnNavigationItemSe
         setSupportActionBar(toolbar)
 
         sharedPreferences = this@Home_Activity_new!!.getSharedPreferences("Sesssion", MODE_PRIVATE)!!
-
 
         fab = findViewById(R.id.fab)
         fab.setOnClickListener {
@@ -143,7 +142,7 @@ class Home_Activity_new : AppCompatActivity(), NavigationView.OnNavigationItemSe
         txt_msg_profileComplete.setOnClickListener {
             val intent = Intent(this@Home_Activity_new, EditProfileActivity::class.java)
             intent.putExtra("name", name)
-            intent.putExtra("userId", sharedPreferences!!.getString(Constants.userId,""))
+            intent.putExtra("userId", sharedPreferences!!.getString(Constants.userId, ""))
             intent.putExtra("emailId", emailId)
             intent.putExtra("contactNumber", contactNumber)
             intent.putExtra("isEmailIdVerified", isEmailIdVerified)
@@ -185,9 +184,9 @@ class Home_Activity_new : AppCompatActivity(), NavigationView.OnNavigationItemSe
         main_layout_home = findViewById(R.id.main_layout_home)
 
         //get user profile data
-        if(UtilityClass.isNetworkConnected(this@Home_Activity_new)) {
+        if (UtilityClass.isNetworkConnected(this@Home_Activity_new)) {
             getProfile()
-        }else{
+        } else {
             progressBarImage.setVisibility(View.GONE);
         }
 
@@ -461,7 +460,9 @@ class Home_Activity_new : AppCompatActivity(), NavigationView.OnNavigationItemSe
                     "No"
             ) { dialog, id -> dialog.cancel() }
             alert.setPositiveButton("Yes"
-            ) { _, _ -> finish() }
+            ) { _, _ ->
+                finishAffinity()
+            }
             alert.show()
         }
     }
@@ -540,7 +541,7 @@ class Home_Activity_new : AppCompatActivity(), NavigationView.OnNavigationItemSe
                                 }
                                 if (jsonObject1.has("emailId")) {
                                     emailId = jsonObject1.getString("emailId")
-                                    if (emailId != null || emailId!=("")) {
+                                    if (emailId != null || emailId != ("")) {
                                         txt_msg_profileComplete.visibility = View.GONE
                                     } else {
                                         txt_msg_profileComplete.visibility = View.VISIBLE
@@ -626,7 +627,7 @@ class Home_Activity_new : AppCompatActivity(), NavigationView.OnNavigationItemSe
         super.onResume()
 
         hideKeyboard(this@Home_Activity_new)
-        if (frgtActive==("savedAddressListFragment")){
+        if (frgtActive == ("savedAddressListFragment")) {
             btn_personal.isEnabled = false
             btn_received.isEnabled = false
             fragmentManager.beginTransaction().replace(R.id.frgtContainerr, savedAddressListFragment, "").commit()
@@ -646,8 +647,7 @@ class Home_Activity_new : AppCompatActivity(), NavigationView.OnNavigationItemSe
             btn_personal.isEnabled = true
             btn_received.isEnabled = true
 
-        }
-        else if (frgtActive==("receivedfragment")){
+        } else if (frgtActive == ("receivedfragment")) {
             btn_personal.isEnabled = false
             btn_favorite.isEnabled = false
             fragmentManager.beginTransaction().replace(R.id.frgtContainerr, sharedWithMeActivity, "").commit()
@@ -669,11 +669,10 @@ class Home_Activity_new : AppCompatActivity(), NavigationView.OnNavigationItemSe
             btn_personal.isEnabled = true
             btn_favorite.isEnabled = true
 
-        }
-        else if(frgtActive=="profilefragment"){
-            if(UtilityClass.isNetworkConnected(this@Home_Activity_new)) {
+        } else if (frgtActive == "profilefragment") {
+            if (UtilityClass.isNetworkConnected(this@Home_Activity_new)) {
                 getProfile()
-            }else{
+            } else {
                 progressBarImage.setVisibility(View.GONE);
             }
             fragmentManager.beginTransaction().replace(R.id.frgtContainerr, profilefragment, "").commit()

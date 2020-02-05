@@ -620,7 +620,7 @@ public class SignInActivity extends AppCompatActivity {
                                     new Handler().postDelayed(new Runnable() {
                                         @Override
                                         public void run() {
-                                            startActivity(new Intent(SignInActivity.this, Home_Activity_new.class));
+                                            startActivity(new Intent(SignInActivity.this, Home_Activity_new.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                             finish();
 
                                         }

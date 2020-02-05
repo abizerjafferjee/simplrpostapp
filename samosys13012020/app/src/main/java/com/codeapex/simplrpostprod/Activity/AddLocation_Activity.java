@@ -260,8 +260,8 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
     @Override
     public void onResume() {
         super.onResume();
-        mMapView.onResume();
 
+        mMapView.onResume();
         mMainPresenter.loadCurrentLocation();
     }
 
@@ -270,8 +270,8 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
         super.onPause();
 
         mMapView.onPause();
-
         mMainPresenter.stopListeningForLocation();
+
     }
 
     @Override
@@ -357,26 +357,6 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void getLocation() {
-        /*locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-        Criteria criteria = new Criteria();
-        provider = locationManager.getBestProvider(criteria, false);
-
-        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    Activity#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for Activity#requestPermissions for more details.
-            return;
-        }
-        Location location = locationManager.getLastKnownLocation(provider);
-        Log.e("location:", "AJAY" + location.getLatitude());
-        //locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 3000, 2000, this);
-
-        if (location != null) {}*/
 
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
@@ -1120,15 +1100,6 @@ public class AddLocation_Activity extends FragmentActivity implements Response.L
             }
         }, 1500);
     }
-
-    /*
-     * Create a get url to fetch results from google place autocomplete api.
-     * Append the input received from autocomplete edittext
-     * Append your current location
-     * Append radius you want to search results within
-     * Choose a language you want to fetch data in
-     * Append your google API Browser key
-     */
 
     @Override
     public void onBackPressed() {

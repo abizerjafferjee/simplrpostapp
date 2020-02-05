@@ -5,6 +5,7 @@ package com.codeapex.simplrpostprod.UtilityClass.Api_utils;
  */
 
 import com.codeapex.simplrpostprod.RetrofitApi.Constants;
+import com.fenchtose.tooltip.Tooltip;
 
 import org.json.JSONObject;
 
@@ -100,6 +101,13 @@ public interface ApiInterface {
 
     @POST("forgot_password_contact")
     Call<Object> forgot_password_contact(@Body Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("User/verifyEmailId")
+    Call<ResponseBody> verifyOTPProfile(
+            @Field("userId") String userId,
+            @Field("emailId") String emailId
+    );
 
     @Multipart
     @POST("User/editProfile")

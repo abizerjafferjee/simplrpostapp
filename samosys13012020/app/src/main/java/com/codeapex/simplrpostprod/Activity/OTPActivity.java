@@ -1,7 +1,9 @@
 package com.codeapex.simplrpostprod.Activity;
 
 import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.codeapex.simplrpostprod.AlertViews.Message;
 import com.codeapex.simplrpostprod.R;
 import com.codeapex.simplrpostprod.RetrofitApi.Constants;
@@ -28,6 +31,7 @@ import com.codeapex.simplrpostprod.UtilityClass.Api_utils.SmsReceiver;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import cc.cloudist.acplibrary.ACProgressFlower;
 
 public class OTPActivity extends AppCompatActivity {
@@ -143,7 +147,7 @@ public class OTPActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-   //====================================Functions===========================================//
+    //====================================Functions===========================================//
     public void OtpEnter() {
 
         if (editText_otp1.getText().toString().trim().length() == 0) {
@@ -236,8 +240,18 @@ public class OTPActivity extends AppCompatActivity {
                         editor.commit();
 
                         startActivity(new Intent(OTPActivity.this, EditProfileActivity.class).putExtra("userId", userId)
-                                .putExtra("from","reg")
-                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                .putExtra("from", "reg")
+                                .putExtra("name", "")
+                                .putExtra("userId", userId)
+                                .putExtra("emailId", "")
+                                .putExtra("contactNumber", "")
+                                .putExtra("isEmailIdVerified", "0")
+                                .putExtra("isContactNumberVerified", "")
+                                .putExtra("dpimg", "")
+                                .putExtra("question", "")
+                                .putExtra("answer", "")
+                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                         finish();
                     } else if (result_code.equals(Constants.RESULT_CODE_MINUS_THREE)) {
                         new Message().showSnack(root_lay, "OTP entered is incorrect.");

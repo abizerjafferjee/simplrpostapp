@@ -1,5 +1,6 @@
 package com.codeapex.simplrpostprod.Activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,12 +8,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
@@ -45,6 +48,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidnetworking.model.Progress;
 import com.codeapex.simplrpostprod.AlertViews.Message;
@@ -91,7 +95,7 @@ public class EditProfileActivity extends AppCompatActivity {
     Uri filePath;
     Button button;
     TextView txtVerifyEmail, txt_contactNumber, txt_info;
-    RelativeLayout relativeLayout,top;
+    RelativeLayout relativeLayout, top;
     String name, userId, emailId, contactNumber, dpimg, countryCode = "",
             phoneNumber = "", isEmailIdVerified, isContactNumberVerified;
     ProgressBar Loader;
@@ -109,12 +113,22 @@ public class EditProfileActivity extends AppCompatActivity {
     private SharedPreferences sharedpreferences_session;
     private ProgressBar progressBarImage;
     String from = "home";
-
+    private String[] PERMISSIONS = {Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.CAMERA};
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     String imgURL;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
+        if (hasPermissions(PERMISSIONS)) {
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(PERMISSIONS, REQUEST_CODE_ASK_PERMISSIONS);
+            }
+        }
 
         sharedpreferences = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
         sharedpreferences_session = getSharedPreferences("Sesssion", Context.MODE_PRIVATE);
@@ -155,6 +169,12 @@ public class EditProfileActivity extends AppCompatActivity {
         progressBarImage = findViewById(R.id.progressBarImage);
         top = findViewById(R.id.top);
 
+        Log.e("isEmailIdVerified", "" + isEmailIdVerified);
+
+        if (isEmailIdVerified.equals("0")) {
+            txtVerifyEmail.setVisibility(View.VISIBLE);
+        }
+
         edt_answer.setText(answer);
 
         txt_info.setOnClickListener(new View.OnClickListener() {
@@ -170,7 +190,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
             }
         });
-
 
         edtName.setText(name);
         txt_contactNumber.setText(contactNumber);
@@ -215,7 +234,6 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-        Log.e("question", "data" + question);
         if (question != null && !question.isEmpty()) {
             spinnerQuestions.setSelection(Integer.parseInt("" + question.charAt(0)));
         }
@@ -223,8 +241,7 @@ public class EditProfileActivity extends AppCompatActivity {
         txtVerifyEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                emailVerified();
-
+                verifyOTP();
             }
         });
 
@@ -235,6 +252,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -246,9 +264,8 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-
         imgURL = sharedpreferences_session.getString(Constants.profilePicURL, "");
-        Log.e("imgURL","imgURL::"+imgURL);
+
         if (imgURL != null && !imgURL.isEmpty()) {
             dpimg = Constants.IMG_URL + imgURL;
 
@@ -268,7 +285,7 @@ public class EditProfileActivity extends AppCompatActivity {
                             progressBarImage.setVisibility(View.GONE);
                         }
                     });
-        }else {
+        } else {
             progressBarImage.setVisibility(View.GONE);
             imgUserImage.setImageResource(R.drawable.profileplchlder);
         }
@@ -289,8 +306,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
                             if (item.getTitle().toString().equals("Remove Picture")) {
                                 imgUserImage.setImageResource(R.drawable.profileplchlder);
-                                Log.e("imgurl","::"+imgURL );
-                                imgURL=null;
+                                Log.e("imgurl", "::" + imgURL);
+                                imgURL = null;
                                 imageFile = null;
 
                             } else {
@@ -301,7 +318,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         }
                     });
 
-                }else {
+                } else {
                     Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(i, RESULT_LOAD_IMAGE);
 
@@ -313,11 +330,11 @@ public class EditProfileActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (from!=null && from.equals("reg")){
-            startActivity(new Intent(EditProfileActivity.this,HomeActivity.class)
-            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        if (from != null && from.equals("reg")) {
+            startActivity(new Intent(EditProfileActivity.this, Home_Activity_new.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             finish();
-        }else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -370,6 +387,11 @@ public class EditProfileActivity extends AppCompatActivity {
     private void BitmapImagetoFile(Bitmap bitmap) {
         try {
             String path = Environment.getExternalStorageDirectory().toString();
+            File mydir = EditProfileActivity.this.getDir(""+getString(R.string.app_name), Context.MODE_PRIVATE); //Creating an internal dir;
+            if (!mydir.exists())
+            {
+                mydir.mkdirs();
+            }
             new File(path + "/" + getString(R.string.app_name)).mkdirs();
             imageFile = new File(path + "/" + getString(R.string.app_name) + System.currentTimeMillis() + ".png");
             FileOutputStream out = new FileOutputStream(imageFile);
@@ -383,8 +405,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
 
-//.....................................api..........................//
-
+    //.....................................api..........................................//
     void emailVerified() {
         emailId = edtEmail.getText().toString().trim();
         HashMap<String, String> hashMap = new HashMap<>();
@@ -399,6 +420,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     progressFlower.dismiss();
                 }
                 if (response.isSuccessful()) {
+                    Log.e("jsonObject", "" + response.body().toString());
 
                     try {
                         JSONObject jsonObject = new JSONObject(new Gson().toJson(response.body()));
@@ -411,24 +433,17 @@ public class EditProfileActivity extends AppCompatActivity {
                             new Message().showSnack(root_lay, "This account has been deleted from this platform.");
                         } else if (result_code.equals(Constants.RESULT_CODE_MINUS_TWO)) {
                             new Message().showSnack(root_lay, "Something went wrong. Please try after some time.");
-
                         } else if (result_code.equals(Constants.RESULT_CODE_MINUS_THREE)) {
                             new Message().showSnack(root_lay, "No data found.");
-
                         } else if (result_code.equals(Constants.RESULT_CODE_MINUS_FIVE)) {
                             new Message().showSnack(root_lay, "This account has been blocked.");
-
-
                         } else if (result_code.equals(Constants.RESULT_CODE_MINUS_FOUR)) {
                             new Message().showSnack(root_lay, "Username is already used by someone else. ");
-
                         } else if (result_code.equals(Constants.RESULT_CODE_MINUS_SIX)) {
                             new Message().showSnack(root_lay, "All fields not sent.");
-
                         } else if (result_code.equals(Constants.RESULT_CODE_MINUS_SEVEN)) {
                             new Message().showSnack(root_lay, " Please check the request method.");
                         } else if (result_code.equals(Constants.RESULT_CODE_ONE)) {
-
                             AlertDialog.Builder builder
                                     = new AlertDialog
                                     .Builder(EditProfileActivity.this);
@@ -437,8 +452,7 @@ public class EditProfileActivity extends AppCompatActivity {
                             builder
                                     .setPositiveButton(
                                             "Ok",
-                                            new DialogInterface
-                                                    .OnClickListener() {
+                                            new DialogInterface.OnClickListener() {
 
                                                 @Override
                                                 public void onClick(DialogInterface dialog,
@@ -450,10 +464,7 @@ public class EditProfileActivity extends AppCompatActivity {
                                             });
                             AlertDialog alertDialog = builder.create();
                             alertDialog.show();
-
-
                         }
-
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -471,7 +482,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     void editProfile() {
-        Log.e("spinnerValue", "" + spinnerValue);
+
         if (UtilityClass.isNetworkConnected(EditProfileActivity.this)) {
             try {
 
@@ -488,15 +499,15 @@ public class EditProfileActivity extends AppCompatActivity {
                     new Message().showSnack(root_lay, "Invalid email address.");
                     edtEmail.requestFocus();
                     return;
-                } else if(imageFile == null) {
+                } else if (imageFile == null) {
                     //new Message().showSnack(root_lay, "Image null");
                     name = edtName.getText().toString().trim();
                     emailId = edtEmail.getText().toString().trim();
                     contactNumber = txt_contactNumber.getText().toString().trim();
                     ///code by khushbu
-                    if(imgURL==null){
+                    if (imgURL == null) {
                         updateProfile("remove");
-                    }else {
+                    } else {
                         updateProfile("");
                     }
 
@@ -521,16 +532,12 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void updateProfileMultipart() {
 
-
         RequestBody userId_ = RequestBody.create(MediaType.parse("multipart/form-data"), userId);
         RequestBody contactNumber_ = RequestBody.create(MediaType.parse("multipart/form-data"), contactNumber);
         RequestBody emailId_ = RequestBody.create(MediaType.parse("multipart/form-data"), emailId);
-        //RequestBody security_question_ = RequestBody.create(MediaType.parse("multipart/form-data"), spinnerValue);
-        //RequestBody security_answer_ = RequestBody.create(MediaType.parse("multipart/form-data"), edt_answer.getText().toString());
         RequestBody name_ = RequestBody.create(MediaType.parse("multipart/form-data"), name);
         RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile);
         MultipartBody.Part body = MultipartBody.Part.createFormData(Constants.profilePicURL, imageFile.getName(), requestFile);
-
 
         Parser.callApi(EditProfileActivity.this, "Sign In...", true, ApiClient.getClient().create(ApiInterface.class).updateProfileMultipart(userId_, contactNumber_, emailId_, name_, body), new Response_Call_Back() {
             @Override
@@ -541,12 +548,60 @@ public class EditProfileActivity extends AppCompatActivity {
                     String result_code = jsonObject.getString("resultCode");
 
                     if (result_code.equals("1")) {
-                        JSONObject resultData = jsonObject.getJSONObject("resultData");
-                        JSONObject json_otpId = resultData.optJSONObject("otpId");
-                        String otpId_ = json_otpId.optString("otpId");
-                        //String otpType = json_otpId.optString("otpType");
-                        String isEmailVerified = resultData.optString("isEmailVerified");
-                        if (isEmailVerified.equals("0")) {
+
+                        final Dialog dialog = new Dialog(EditProfileActivity.this, R.style.DialogSlideAnim);
+                        LayoutInflater inflater = getLayoutInflater();
+                        View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog.setCancelable(false);
+                        dialog.setContentView(view);
+
+                        TextView btn_yes = view.findViewById(R.id.btn_yes);
+                        TextView btn_no = view.findViewById(R.id.btn_no);
+
+                        btn_yes.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                    startActivity(new Intent(EditProfileActivity.this, AddLocation_Activity.class)
+                                            .putExtra("address_id", "")
+                                            .putExtra("user_id", "")
+                                            .putExtra("profile_img", "")
+                                            .putExtra("user_name", "")
+                                            .putExtra("plus_code", "")
+                                            .putExtra("public_private_tag", "")
+                                            .putExtra("qr_code_img", "")
+                                            .putExtra("street_img", "")
+                                            .putExtra("building_img", "")
+                                            .putExtra("entrance_img", "")
+                                            .putExtra("address_unique_link", "")
+                                            .putExtra("country", "")
+                                            .putExtra("city", "")
+                                            .putExtra("street", "")
+                                            .putExtra("building", "")
+                                            .putExtra("entrance", "")
+                                            .putExtra("latitude", "")
+                                            .putExtra("longitude", "")
+                                            .putExtra("direction_txt", "")
+                                            .putExtra("from", "profile")
+                                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                    dialog.dismiss();
+                                    finish();
+                            }
+                        });
+
+                        btn_no.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(EditProfileActivity.this, Home_Activity_new.class)
+                                        .putExtra("userId", userId).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                finish();
+                            }
+                        });
+
+                        dialog.show();
+
+                       /* if (isEmailVerified.equals("0")) {
                             startActivity(new Intent(EditProfileActivity.this, OTPActivity_forgot.class)
                                     .putExtra("otpId", otpId_)
                                     .putExtra("otpType", "3")
@@ -556,65 +611,10 @@ public class EditProfileActivity extends AppCompatActivity {
                                     .putExtra("mobileNumber", contactNumber));
 
                         } else {
-                            //new Message().showSnackGreen(root_lay, "Profile updated successfully!");
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    final Dialog dialog = new Dialog(EditProfileActivity.this, R.style.DialogSlideAnim);
-                                    LayoutInflater inflater = getLayoutInflater();
-                                    View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
-                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                                    dialog.setCancelable(false);
-                                    dialog.setContentView(view);
 
-                                    TextView btn_yes = view.findViewById(R.id.btn_yes);
-                                    TextView btn_no = view.findViewById(R.id.btn_no);
-
-                                    btn_yes.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            dialog.dismiss();
-                                            startActivity(new Intent(EditProfileActivity.this, AddLocation_Activity.class)
-                                                    .putExtra("address_id", "")
-                                                    .putExtra("user_id", "")
-                                                    .putExtra("profile_img", "")
-                                                    .putExtra("user_name", "")
-                                                    .putExtra("plus_code", "")
-                                                    .putExtra("public_private_tag", "")
-                                                    .putExtra("qr_code_img", "")
-                                                    .putExtra("street_img", "")
-                                                    .putExtra("building_img", "")
-                                                    .putExtra("entrance_img", "")
-                                                    .putExtra("address_unique_link", "")
-                                                    .putExtra("country", "")
-                                                    .putExtra("city", "")
-                                                    .putExtra("street", "")
-                                                    .putExtra("building", "")
-                                                    .putExtra("entrance", "")
-                                                    .putExtra("latitude", "")
-                                                    .putExtra("longitude", "")
-                                                    .putExtra("direction_txt", "")
-                                                    .putExtra("from", "profile")
-                                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                            finish();
-                                        }
-                                    });
-
-                                    btn_no.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            startActivity(new Intent(EditProfileActivity.this, Home_Activity_new.class)
-                                                    .putExtra("userId", userId).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                            finish();
-                                        }
-                                    });
-
-                                    dialog.show();
-                                }
-                            }, 300);
-                        }
+                        }*/
                     } else if (result_code.equals("0")) {
-                        new Message().showSnack(root_lay, ""+jsonObject.optString("data"));
+                        new Message().showSnack(root_lay, "" + jsonObject.optString("data"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -622,6 +622,33 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == REQUEST_CODE_ASK_PERMISSIONS) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[2] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[3] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[4] == PackageManager.PERMISSION_GRANTED
+            ) {
+            } else {
+                finish();
+                Toast.makeText(EditProfileActivity.this, "Some Permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    public boolean hasPermissions(String... permissions) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            for (String permission : permissions) {
+                if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private void updateProfile(String body) {
@@ -632,7 +659,6 @@ public class EditProfileActivity extends AppCompatActivity {
         String security_question_ = spinnerValue;
         String security_answer_ = edt_answer.getText().toString();
         String name_ = name;
-       // String body = "";
 
         Parser.callApi(EditProfileActivity.this, "Sign In...", true, ApiClient.getClient().create(ApiInterface.class)
                 .updateProfile(userId_, contactNumber_, emailId_, security_question_, security_answer_, name_, body), new Response_Call_Back() {
@@ -645,13 +671,88 @@ public class EditProfileActivity extends AppCompatActivity {
                     String result_code = jsonObject.getString("resultCode");
 
                     if (result_code.equals("1")) {
+
+                        final Dialog dialog = new Dialog(EditProfileActivity.this, R.style.DialogSlideAnim);
+                        LayoutInflater inflater = getLayoutInflater();
+                        View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog.setCancelable(false);
+                        dialog.setContentView(view);
+
+                        TextView btn_yes = view.findViewById(R.id.btn_yes);
+                        TextView btn_no = view.findViewById(R.id.btn_no);
+
+                        btn_yes.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                startActivity(new Intent(EditProfileActivity.this, AddLocation_Activity.class)
+                                        .putExtra("address_id", "")
+                                        .putExtra("user_id", "")
+                                        .putExtra("profile_img", "")
+                                        .putExtra("user_name", "")
+                                        .putExtra("plus_code", "")
+                                        .putExtra("public_private_tag", "")
+                                        .putExtra("qr_code_img", "")
+                                        .putExtra("street_img", "")
+                                        .putExtra("building_img", "")
+                                        .putExtra("entrance_img", "")
+                                        .putExtra("address_unique_link", "")
+                                        .putExtra("country", "")
+                                        .putExtra("city", "")
+                                        .putExtra("street", "")
+                                        .putExtra("building", "")
+                                        .putExtra("entrance", "")
+                                        .putExtra("latitude", "")
+                                        .putExtra("longitude", "")
+                                        .putExtra("direction_txt", "")
+                                        .putExtra("from", "profile")
+                                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                dialog.dismiss();
+                                finish();
+
+                            }
+                        });
+
+                        btn_no.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(EditProfileActivity.this, Home_Activity_new.class)
+                                        .putExtra("userId", userId).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                finish();
+                            }
+                        });
+
+                        dialog.show();
+                    } else if (result_code.equals("0")) {
+                        new Message().showSnack(root_lay, "" + jsonObject.optString("data"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
+    public void verifyOTP(){
+        if (edtEmail.getText().toString().equals("")){
+            new Message().showSnack(root_lay, "Please enter email address.");
+            return;
+        }
+        Parser.callApi(EditProfileActivity.this, "Sign In...", true, ApiClient.getClient().create(ApiInterface.class).verifyOTPProfile(userId,edtEmail.getText().toString().trim()), new Response_Call_Back() {
+            @Override
+            public void getResponseFromServer(String response) {
+                Log.e("Edit OTP response::", "data" + response);
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String result_code = jsonObject.getString("resultCode");
+
+                    if (result_code.equals("1")) {
                         JSONObject resultData = jsonObject.getJSONObject("resultData");
-                        JSONObject json_otpId = resultData.optJSONObject("otpId");
-                        String otpId_ = json_otpId.optString("otpId");
-                        String isEmailVerified = resultData.optString("isEmailVerified");
-                        if (isEmailVerified.equals("0")) {
-                            isEmailVerified="0";
-                            startActivity(new Intent(EditProfileActivity.this, OTPActivity_forgot.class)
+                        String otpId_ = resultData.optString("otpId");
+
+                        startActivity(new Intent(EditProfileActivity.this, OTPActivity_forgot.class)
                                     .putExtra("otpId", otpId_)
                                     .putExtra("otpType", "3")
                                     .putExtra("userId", userId)
@@ -659,66 +760,9 @@ public class EditProfileActivity extends AppCompatActivity {
                                     .putExtra("email", edtEmail.getText().toString().trim())
                                     .putExtra("mobileNumber", contactNumber));
 
-                        } else {
-                            //new Message().showSnackGreen(root_lay, "Profile updated successfully!");
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    final Dialog dialog = new Dialog(EditProfileActivity.this, R.style.DialogSlideAnim);
-                                    LayoutInflater inflater = getLayoutInflater();
-                                    View view = inflater.inflate(R.layout.edit_confirmation_dialog, null);
-                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                                    dialog.setCancelable(false);
-                                    dialog.setContentView(view);
 
-                                    TextView btn_yes = view.findViewById(R.id.btn_yes);
-                                    TextView btn_no = view.findViewById(R.id.btn_no);
-
-                                    btn_yes.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            dialog.dismiss();
-                                            startActivity(new Intent(EditProfileActivity.this, AddLocation_Activity.class)
-                                                    .putExtra("address_id", "")
-                                                    .putExtra("user_id", "")
-                                                    .putExtra("profile_img", "")
-                                                    .putExtra("user_name", "")
-                                                    .putExtra("plus_code", "")
-                                                    .putExtra("public_private_tag", "")
-                                                    .putExtra("qr_code_img", "")
-                                                    .putExtra("street_img", "")
-                                                    .putExtra("building_img", "")
-                                                    .putExtra("entrance_img", "")
-                                                    .putExtra("address_unique_link", "")
-                                                    .putExtra("country", "")
-                                                    .putExtra("city", "")
-                                                    .putExtra("street", "")
-                                                    .putExtra("building", "")
-                                                    .putExtra("entrance", "")
-                                                    .putExtra("latitude", "")
-                                                    .putExtra("longitude", "")
-                                                    .putExtra("direction_txt", "")
-                                                    .putExtra("from", "profile")
-                                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                            finish();
-                                        }
-                                    });
-
-                                    btn_no.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            startActivity(new Intent(EditProfileActivity.this, Home_Activity_new.class)
-                                                    .putExtra("userId", userId).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                            finish();
-                                        }
-                                    });
-
-                                    dialog.show();
-                                }
-                            }, 300);
-                        }
                     } else if (result_code.equals("0")) {
-                        new Message().showSnack(root_lay, ""+jsonObject.optString("data"));
+                        new Message().showSnack(root_lay, ""+jsonObject.optString("resultData"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
