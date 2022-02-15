@@ -232,7 +232,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" /> <!-- <meta-data -->
         <!-- android:name="com.google.android.maps.v2.API_KEY" -->
-        <!-- android:value="AIzaSyCzQA-caNDWIuwvOf0YRKKeW89bsadf6pM" /> -->
+        <!-- android:value="" /> -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBVXQw3qGgpUCqkxIqtcks2VZafV3Xz39g" />
