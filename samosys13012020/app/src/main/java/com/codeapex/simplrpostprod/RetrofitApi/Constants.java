@@ -7,7 +7,7 @@ public class Constants {
 //    public static String MAIN_URL ="http://admin.simplrpost.com/staging/Api/";
     public static String MAIN_URL ="http://admin.simplrpost.com/Api/";
     public static String BASE_URL = "http://www.admin.simplrpost.com/";
-    public static String KEY_FOR_API = "AIzaSyC6wyLSoCUnQzp1SNXZWPyLJJ2xI0PC_qk";
+    public static String KEY_FOR_API = "";
 
     //public static String IMG_URL ="http://103.15.67.74/pro1/simplrpost/uploads/" ;
     //staging
